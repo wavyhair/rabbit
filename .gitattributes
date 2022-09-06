@@ -1,2 +1,6 @@
+# 当执行 git 动作时，.gitattributes 文件允许你指定由 git 使用的文件和路径的属性，例如：git commit 等。
+# 换句话说，每当有文件保存或者创建时，git 会根据指定的属性来自动地保存。
+# 其中的一个属性是 eol(end of line)，用于配置文件的结尾。
+# 即使在不同的机器、操作系统 上都可以使得每个开发者都可以使用相同的值。
 * text eol=lf
 *.txt text eol=lf
