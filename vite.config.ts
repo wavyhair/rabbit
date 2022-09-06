@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 18:46:37
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-06 19:15:16
+ * @LastEditTime: 2022-09-06 19:20:33
  * @FilePath: \rabbit-ts-vue3\vite.config.ts
  * @Description: vite.config
  */
@@ -15,6 +15,16 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, './src')
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        additionalData: `
+           @import "@/assets/styles/variables.less";
+           @import "@/assets/styles/mixins.less";
+      `
+      }
     }
   }
 })
