@@ -2,12 +2,12 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 19:40:26
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-06 19:45:08
+ * @LastEditTime: 2022-09-06 20:26:02
  * @FilePath: \rabbit-ts-vue3\.eslintrc.js
  * @Description: eslintrc
  */
 /* eslint-env node */
-require('@rushstack/eslint-patch/modern-module-resolution');
+require('@rushstack/eslint-patch/modern-module-resolution')
 
 module.exports = {
   root: true,
@@ -25,4 +25,4 @@ module.exports = {
   env: {
     'vue/setup-compiler-macros': true,
   },
-};
+}
