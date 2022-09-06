@@ -2,17 +2,27 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 20:13:29
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-06 22:05:37
+ * @LastEditTime: 2022-09-06 22:34:20
  * @FilePath: \rabbit-ts-vue3\src\views\layout\index.vue
  * @Description: layout
 -->
 <script setup lang="ts" name="Layout">
 import AppTopnav from './components/app-topnav.vue'
 import AppHeader from './components/app-header.vue'
+import AppFooter from './components/app-footer.vue'
 </script>
 <template>
   <AppTopnav />
   <AppHeader />
+  <main class="app-body">
+    <!-- 出口 -->
+  </main>
+
+  <AppFooter />
 </template>
 
-<style scoped></style>
+<style lang="less" scoped>
+.app-body {
+  min-height: 600px;
+}
+</style>
