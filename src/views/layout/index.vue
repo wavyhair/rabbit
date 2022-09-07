@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 20:13:29
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-06 22:34:20
+ * @LastEditTime: 2022-09-07 20:24:25
  * @FilePath: \rabbit-ts-vue3\src\views\layout\index.vue
  * @Description: layout
 -->
@@ -16,6 +16,7 @@ import AppFooter from './components/app-footer.vue'
   <AppHeader />
   <main class="app-body">
     <!-- 出口 -->
+    <RouterView />
   </main>
 
   <AppFooter />
