@@ -1,25 +1,23 @@
 <!--
  * @Author: CHENJIE
  * @Date: 2022-09-06 22:07:38
- * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-06 22:09:40
- * @FilePath: \rabbit-ts-vue3\src\views\layout\components\app-header-nav.vue
+ * @LastEditors: chenjie
+ * @LastEditTime: 2022-09-07 15:04:34
+ * @FilePath: /src/views/layout/components/app-header-nav.vue
  * @Description: 
 -->
-<script lang="ts" setup name="AppHeaderNav"></script>
+<script lang="ts" setup name="AppHeaderNav">
+  import useStore from '@/store'
+  import { storeToRefs } from 'pinia';
+  const {category} = useStore()
+  category.getAllCategory()
+  const {list} =storeToRefs(category) 
+</script>
 
 <template>
   <ul class="app-header-nav">
     <li class="home"><RouterLink to="/">首页</RouterLink></li>
-    <li><a href="#">美食</a></li>
-    <li><a href="#">餐厨</a></li>
-    <li><a href="#">艺术</a></li>
-    <li><a href="#">电器</a></li>
-    <li><a href="#">居家</a></li>
-    <li><a href="#">洗护</a></li>
-    <li><a href="#">孕婴</a></li>
-    <li><a href="#">服装</a></li>
-    <li><a href="#">杂货</a></li>
+    <li v-for="item in list" :key="item.id"><a href="#">{{item.name}}</a></li>
   </ul>
 </template>
 
