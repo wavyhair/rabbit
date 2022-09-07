@@ -9,6 +9,7 @@ export type CategoryItem = {
     id: string
     name: string
     picture: string
+    children:CategoryItem[]
 }
 // CategoryItem 类型响应类型
 export type CategoryItemResponse = ApiResponse<CategoryItem[]>
