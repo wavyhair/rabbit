@@ -2,8 +2,8 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 22:07:38
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-08 20:22:02
- * @FilePath: \rabbit-ts-vue3\src\views\layout\components\app-header-nav.vue
+ * @LastEditTime: 2022-09-09 14:21:00
+ * @FilePath: /src/views/layout/components/app-header-nav.vue
  * @Description: app-header-nav
 -->
 <script lang="ts" setup name="AppHeaderNav">
@@ -17,10 +17,10 @@ category.getAllCategory()
     <li class="home"><RouterLink to="/">首页</RouterLink></li>
     <!-- 一级分类按钮 -->
     <li
-      v-for="item in category.list"
+      v-for="(item, index) in category.list"
       @mouseenter="category.show(item.id)"
       @mouseleave="category.hide(item.id)"
-      :key="item.id"
+      :key="index"
     >
       <RouterLink
         @click="category.hide(item.id)"
