@@ -3,7 +3,7 @@
  * @Date: 2022-09-06 19:40:26
  * @LastEditors: CHENJIE
  * @LastEditTime: 2022-09-06 20:26:02
- * @FilePath: \rabbit-ts-vue3\.eslintrc.js
+ * @FilePath: \rabbit-ts-vue3\.eslintrc.cjs
  * @Description: eslintrc
  */
 /* eslint-env node */
