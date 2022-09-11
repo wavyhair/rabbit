@@ -2,7 +2,7 @@
  * @Autor:jiea
  * @Date: 2022-09-10 21:34
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-11 18:24:44
+ * @LastEditTime: 2022-09-11 20:01:35
  * @FilePath: \rabbit-ts-vue3\src\views\home\components\home-category.vue
  * @Description: 左侧分类组件
 -->
@@ -25,12 +25,30 @@ const goods = computed(() => {
         :class="{ active: item.id === categoryId }"
       >
         <RouterLink :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
-        <RouterLink
-          v-for="sub in item?.children?.slice(0, 2)"
-          :key="sub.id"
-          :to="`/category/sub/${sub.id}`"
-          >{{ sub.name }}</RouterLink
-        >
+
+        <template v-if="item.children">
+          <RouterLink
+            v-for="sub in item?.children?.slice(0, 2)"
+            :key="sub.id"
+            :to="`/category/sub/${sub.id}`"
+            >{{ sub.name }}</RouterLink
+          >
+        </template>
+        <template v-else>
+          <XtxSkeleton
+            :width="60"
+            :height="18"
+            style="margin-right: 5px"
+            bg="rgba(255,255,255,0.2)"
+            animated
+          />
+          <XtxSkeleton
+            :width="50"
+            :height="18"
+            bg="rgba(255,255,255,0.2)"
+            animated
+          />
+        </template>
       </li>
     </ul>
     <!-- 弹层 -->
