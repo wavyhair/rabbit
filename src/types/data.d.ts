@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-07 19:20:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-11 18:04:22
+ * @LastEditTime: 2022-09-12 10:55:03
  * @FilePath: \rabbit-ts-vue3\src\types\data.d.ts
  * @Description:类型文件
  */
@@ -29,5 +29,15 @@ export type CategoryItem = {
   goods: CategoryGoods[]
   children: CategoryItem[]
 }
+// 首页轮播图类型
+export type SlidesItem = {
+  id: string
+  imgUrl: string
+  hrefUrl: string
+  type: string
+}
+
 // CategoryItem 类型响应类型
 export type CategoryItemResponse = ApiResponse<CategoryItem[]>
+// 首页轮播图响应类型
+export type SlidesItemResponse = ApiResponse<SlidesItem[]>
