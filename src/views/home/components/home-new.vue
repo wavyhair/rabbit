@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-14 20:38:28
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-14 20:51:59
+ * @LastEditTime: 2022-09-14 21:23:56
  * @FilePath: \rabbit-ts-vue3\src\views\home\components\home-new.vue
  * @Description:home-new
 -->
@@ -20,7 +20,7 @@ home.getNewList()
       <ul class="goods-list">
         <li v-for="item in home.newGoodList" :key="item.id">
           <RouterLink :to="`/product/${item.id}`">
-            <img :src="item.picture" alt="" />
+            <img v-lazy="item.picture" alt="" />
             <p class="name ellipsis">{{ item.name }}</p>
             <p class="price">&yen;{{ item.price }}</p>
           </RouterLink>
