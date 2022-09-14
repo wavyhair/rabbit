@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-11 19:48:50
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-12 12:14:00
+ * @LastEditTime: 2022-09-14 20:15:56
  * @FilePath: \rabbit-ts-vue3\src\global.d.ts
  * @Description:全局组件类型文件
  */
@@ -14,11 +14,12 @@
  */
 import XtxSkeleton from '@/components/skeleton/index.vue'
 import XtxCarouse from '@/components/carouse/index.vue'
-
+import XtxMore from '@/components/more/index.vue'
 declare module 'vue' {
   export interface GlobalComponents {
     XtxSkeleton: typeof XtxSkeleton
     XtxCarouse: typeof XtxCarouse
+    XtxMore: typeof XtxMore
   }
 }
 export {}
