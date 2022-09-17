@@ -2,18 +2,20 @@
  * @Author: CHENJIE
  * @Date: 2022-09-14 20:38:28
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-14 21:23:56
+ * @LastEditTime: 2022-09-17 19:23:47
  * @FilePath: \rabbit-ts-vue3\src\views\home\components\home-new.vue
  * @Description:home-new
 -->
 <script lang="ts" setup name="HomeNew">
+import { useLazyData } from '@/utils/hooks'
 import HomePanel from './home-panel.vue'
 import useStore from '@/store'
 const { home } = useStore()
-home.getNewList()
+
+const target = useLazyData(home.getNewList)
 </script>
 <template>
-  <div class="home-new">
+  <div ref="target" class="home-new">
     <HomePanel title="新鲜好物" sub-title="新鲜出炉 品质靠谱">
       <template #right><XtxMore path="/" /></template>
       <!-- 面板内容 -->

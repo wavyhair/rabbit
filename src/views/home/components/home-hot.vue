@@ -2,18 +2,19 @@
  * @Author: CHENJIE
  * @Date: 2022-09-14 20:56:32
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-14 21:24:16
+ * @LastEditTime: 2022-09-17 19:22:26
  * @FilePath: \rabbit-ts-vue3\src\views\home\components\home-hot.vue
  * @Description:home-hot
 -->
 <script lang="ts" setup name="HomeHot">
+import { useLazyData } from '@/utils/hooks'
 import useStore from '@/store'
 import HomePanel from './home-panel.vue'
 const { home } = useStore()
-home.getHotList()
+const target = useLazyData(home.getHotList)
 </script>
 <template>
-  <HomePanel title="人气推荐" sub-title="人气爆款 不容错过">
+  <HomePanel ref="target" title="人气推荐" sub-title="人气爆款 不容错过">
     <ul ref="pannel" class="goods-list">
       <li v-for="item in home.hotGoodList" :key="item.id">
         <RouterLink :to="`/category/${item.id}`">

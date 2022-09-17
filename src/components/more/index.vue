@@ -2,12 +2,11 @@
  * @Author: CHENJIE
  * @Date: 2022-09-14 20:01:39
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-14 20:01:45
+ * @LastEditTime: 2022-09-17 19:16:29
  * @FilePath: \rabbit-ts-vue3\src\components\more\index.vue
  * @Description:more
 -->
 <script lang="ts" setup name="XtxMore">
-import { defineProps } from 'vue'
 defineProps({
   path: {
     type: String,
