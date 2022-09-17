@@ -2,7 +2,7 @@
  * @Autor:jiea
  * @Date: 2022-09-10 21:34
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-11 20:01:35
+ * @LastEditTime: 2022-09-17 19:40:32
  * @FilePath: \rabbit-ts-vue3\src\views\home\components\home-category.vue
  * @Description: 左侧分类组件
 -->
@@ -40,12 +40,14 @@ const goods = computed(() => {
             :height="18"
             style="margin-right: 5px"
             bg="rgba(255,255,255,0.2)"
+            fade
             animated
           />
           <XtxSkeleton
             :width="50"
             :height="18"
             bg="rgba(255,255,255,0.2)"
+            fade
             animated
           />
         </template>

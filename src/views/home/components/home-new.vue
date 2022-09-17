@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-14 20:38:28
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-17 19:23:47
+ * @LastEditTime: 2022-09-17 19:33:34
  * @FilePath: \rabbit-ts-vue3\src\views\home\components\home-new.vue
  * @Description:home-new
 -->
@@ -10,13 +10,17 @@
 import { useLazyData } from '@/utils/hooks'
 import HomePanel from './home-panel.vue'
 import useStore from '@/store'
+import HomeSkeleton from './home-skeleton.vue'
 const { home } = useStore()
-
 const target = useLazyData(home.getNewList)
 </script>
 <template>
   <div ref="target" class="home-new">
-    <HomePanel title="新鲜好物" sub-title="新鲜出炉 品质靠谱">
+    <HomePanel
+      v-if="home.newGoodList.length > 0"
+      title="新鲜好物"
+      sub-title="新鲜出炉 品质靠谱"
+    >
       <template #right><XtxMore path="/" /></template>
       <!-- 面板内容 -->
       <ul class="goods-list">
@@ -29,6 +33,7 @@ const target = useLazyData(home.getNewList)
         </li>
       </ul>
     </HomePanel>
+    <HomeSkeleton v-else />
   </div>
 </template>
 
