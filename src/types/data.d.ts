@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-07 19:20:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-14 20:55:04
+ * @LastEditTime: 2022-09-18 15:58:25
  * @FilePath: \rabbit-ts-vue3\src\types\data.d.ts
  * @Description:类型文件
  */
@@ -53,6 +53,19 @@ export interface HotGoods {
   alt: string
 }
 
+// 热门品牌类型
+
+export type Brand = {
+  id: string
+  name: string
+  nameEn: string
+  logo: string
+  picture: string
+  type?: any
+  desc: string
+  place: string
+}
+
 // CategoryItem 类型响应类型
 export type CategoryItemResponse = ApiResponse<CategoryItem[]>
 // 首页轮播图响应类型
@@ -61,3 +74,5 @@ export type SlidesItemResponse = ApiResponse<SlidesItem[]>
 export type GoodItemResponse = ApiResponse<GoodItem[]>
 // 人气推荐响应类型
 export type HotGoodsResponse = ApiResponse<HotGoods[]>
+// 热门品牌响应类型
+export type BrandResponse = ApiResponse<Brand[]>
