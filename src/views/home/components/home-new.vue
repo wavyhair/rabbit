@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-14 20:38:28
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-17 19:33:34
+ * @LastEditTime: 2022-09-18 15:38:24
  * @FilePath: \rabbit-ts-vue3\src\views\home\components\home-new.vue
  * @Description:home-new
 -->
@@ -16,24 +16,22 @@ const target = useLazyData(home.getNewList)
 </script>
 <template>
   <div ref="target" class="home-new">
-    <HomePanel
-      v-if="home.newGoodList.length > 0"
-      title="新鲜好物"
-      sub-title="新鲜出炉 品质靠谱"
-    >
+    <HomePanel title="新鲜好物" sub-title="新鲜出炉 品质靠谱">
       <template #right><XtxMore path="/" /></template>
       <!-- 面板内容 -->
-      <ul class="goods-list">
-        <li v-for="item in home.newGoodList" :key="item.id">
-          <RouterLink :to="`/product/${item.id}`">
-            <img v-lazy="item.picture" alt="" />
-            <p class="name ellipsis">{{ item.name }}</p>
-            <p class="price">&yen;{{ item.price }}</p>
-          </RouterLink>
-        </li>
-      </ul>
+      <Transition name="fade">
+        <ul v-if="home.newGoodList.length > 0" class="goods-list">
+          <li v-for="item in home.newGoodList" :key="item.id">
+            <RouterLink :to="`/product/${item.id}`">
+              <img v-lazy="item.picture" alt="" />
+              <p class="name ellipsis">{{ item.name }}</p>
+              <p class="price">&yen;{{ item.price }}</p>
+            </RouterLink>
+          </li>
+        </ul>
+        <HomeSkeleton v-else />
+      </Transition>
     </HomePanel>
-    <HomeSkeleton v-else />
   </div>
 </template>
 

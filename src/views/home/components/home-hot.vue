@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-14 20:56:32
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-17 19:36:58
+ * @LastEditTime: 2022-09-18 15:37:44
  * @FilePath: \rabbit-ts-vue3\src\views\home\components\home-hot.vue
  * @Description:home-hot
 -->
@@ -13,26 +13,23 @@ import HomePanel from './home-panel.vue'
 import HomeSkeleton from './home-skeleton.vue'
 const { home } = useStore()
 const target = useLazyData(home.getHotList)
-console.log('hotGoodList', home.hotGoodList)
 </script>
 <template>
   <div ref="target" class="home-hot">
-    <HomePanel
-      v-if="home.hotGoodList.length > 0"
-      title="人气推荐"
-      sub-title="人气爆款 不容错过"
-    >
-      <ul ref="pannel" class="goods-list">
-        <li v-for="item in home.hotGoodList" :key="item.id">
-          <RouterLink :to="`/category/${item.id}`">
-            <img v-lazy="item.picture" alt="" />
-            <p class="name">{{ item.title }}</p>
-            <p class="desc">{{ item.alt }}</p>
-          </RouterLink>
-        </li>
-      </ul>
+    <HomePanel title="人气推荐" sub-title="人气爆款 不容错过">
+      <Transition name="fade">
+        <ul v-if="home.hotGoodList.length > 0" ref="pannel" class="goods-list">
+          <li v-for="item in home.hotGoodList" :key="item.id">
+            <RouterLink :to="`/category/${item.id}`">
+              <img v-lazy="item.picture" alt="" />
+              <p class="name">{{ item.title }}</p>
+              <p class="desc">{{ item.alt }}</p>
+            </RouterLink>
+          </li>
+        </ul>
+        <HomeSkeleton v-else />
+      </Transition>
     </HomePanel>
-    <HomeSkeleton v-else />
   </div>
 </template>
 
