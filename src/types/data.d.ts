@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-07 19:20:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-18 15:58:25
+ * @LastEditTime: 2022-09-18 17:42:54
  * @FilePath: \rabbit-ts-vue3\src\types\data.d.ts
  * @Description:类型文件
  */
@@ -66,6 +66,46 @@ export type Brand = {
   place: string
 }
 
+// 首页商品推荐
+export type HomeProduct = {
+  id: string
+  name: string
+  picture: string
+  saleInfo: string
+  children: {
+    id: string
+    name: string
+  }[]
+  goods: {
+    id: string
+    name: string
+    desc: string
+    price: string
+    picture: string
+    discount?: any
+    orderNum: number
+  }[]
+}
+
+// 最新专题
+
+export type Special = {
+  creator: string
+  isDelete: number
+  createTime: string
+  updateTime: string
+  id: string
+  classificationId: string
+  title: string
+  summary: string
+  lowestPrice: number
+  cover: string
+  detailsUrl: string
+  collectNum: number
+  viewNum: number
+  replyNum: number
+}
+
 // CategoryItem 类型响应类型
 export type CategoryItemResponse = ApiResponse<CategoryItem[]>
 // 首页轮播图响应类型
@@ -76,3 +116,7 @@ export type GoodItemResponse = ApiResponse<GoodItem[]>
 export type HotGoodsResponse = ApiResponse<HotGoods[]>
 // 热门品牌响应类型
 export type BrandResponse = ApiResponse<Brand[]>
+// 商品推荐响应类型
+export type HomeProductResponse = ApiResponse<HomeProduct[]>
+// 最新专题响应类型
+export type SpecialResponse = ApiResponse<Special[]>

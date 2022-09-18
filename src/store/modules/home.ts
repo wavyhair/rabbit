@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-12 09:29:09
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-18 15:59:19
+ * @LastEditTime: 2022-09-18 17:46:02
  * @FilePath: \rabbit-ts-vue3\src\store\modules\home.ts
  * @Description:
  */
@@ -15,6 +15,10 @@ import {
   HotGoodsResponse,
   BrandResponse,
   Brand,
+  HomeProduct,
+  HomeProductResponse,
+  SpecialResponse,
+  Special,
 } from '@/types/data'
 import request from '@/utils/request'
 import { defineStore } from 'pinia'
@@ -23,6 +27,8 @@ enum API {
   getNewList = '/home/new',
   getHotList = '/home/hot',
   getBrandList = '/home/brand',
+  getProduct = '/home/goods',
+  getSpecial = '/home/special',
 }
 export default defineStore('home', {
   state: () => ({
@@ -30,6 +36,8 @@ export default defineStore('home', {
     newGoodList: [] as GoodItem[],
     hotGoodList: [] as HotGoods[],
     brandList: [] as Brand[],
+    homeProduct: [] as HomeProduct[],
+    specialList: [] as Special[],
   }),
   actions: {
     // 获取广告轮播图
@@ -51,6 +59,16 @@ export default defineStore('home', {
     async getBrandList() {
       const res = await request.get<BrandResponse>(API.getBrandList)
       this.brandList = res.data.result
+    },
+    // 获取商品推荐
+    async getProduct() {
+      const res = await request.get<HomeProductResponse>(API.getProduct)
+      this.homeProduct = res.data.result
+    },
+    // 获取最新专题
+    async getSpecial() {
+      const res = await request.get<SpecialResponse>(API.getSpecial)
+      this.specialList = res.data.result
     },
   },
 })

@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-07 19:56:49
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-18 15:57:07
+ * @LastEditTime: 2022-09-18 17:40:13
  * @FilePath: \rabbit-ts-vue3\src\views\home\index.vue
  * @Description: home
 -->
@@ -13,6 +13,8 @@ import HomeCategory from './components/home-category.vue'
 import HomeNew from './components/home-new.vue'
 import HomeHot from './components/home-hot.vue'
 import homeBrand from './components/home-brand.vue'
+import HomeProduct from './components/home-product.vue'
+import HomeSpecial from './components/home-special.vue'
 </script>
 <template>
   <div class="page-home">
@@ -28,6 +30,10 @@ import homeBrand from './components/home-brand.vue'
         <HomeHot />
         <!-- 热门品牌 -->
         <homeBrand />
+        <!-- 商品区块 -->
+        <HomeProduct />
+        <!-- 最新专题 -->
+        <HomeSpecial />
       </div>
     </div>
   </div>
