@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-07 19:20:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-18 17:42:54
+ * @LastEditTime: 2022-09-25 21:49:28
  * @FilePath: \rabbit-ts-vue3\src\types\data.d.ts
  * @Description:类型文件
  */
@@ -106,6 +106,14 @@ export type Special = {
   replyNum: number
 }
 
+// 顶级分类类型
+export type TopCategory = {
+  id: string
+  name: string
+  picture: string
+  children: CategoryItem[]
+}
+
 // CategoryItem 类型响应类型
 export type CategoryItemResponse = ApiResponse<CategoryItem[]>
 // 首页轮播图响应类型
@@ -120,3 +128,5 @@ export type BrandResponse = ApiResponse<Brand[]>
 export type HomeProductResponse = ApiResponse<HomeProduct[]>
 // 最新专题响应类型
 export type SpecialResponse = ApiResponse<Special[]>
+// 顶级分类响应类型
+export type TopCategoryResponse = ApiResponse<TopCategory>
