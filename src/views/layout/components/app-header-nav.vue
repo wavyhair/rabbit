@@ -2,8 +2,8 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 22:07:38
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-09 14:21:00
- * @FilePath: /src/views/layout/components/app-header-nav.vue
+ * @LastEditTime: 2022-09-26 22:43:40
+ * @FilePath: \rabbit-ts-vue3\src\views\layout\components\app-header-nav.vue
  * @Description: app-header-nav
 -->
 <script lang="ts" setup name="AppHeaderNav">
@@ -16,9 +16,10 @@ category.getAllCategory()
   <ul class="app-header-nav">
     <li class="home"><RouterLink to="/">首页</RouterLink></li>
     <!-- 一级分类按钮 -->
+    <!-- mouseenter 需要改为 mousemove 鼠标移动之后再显示二级类目 -->
     <li
       v-for="(item, index) in category.list"
-      @mouseenter="category.show(item.id)"
+      @mousemove="category.show(item.id)"
       @mouseleave="category.hide(item.id)"
       :key="index"
     >
