@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 20:15:17
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-07 20:18:26
+ * @LastEditTime: 2022-09-26 22:38:12
  * @FilePath: \rabbit-ts-vue3\src\router\index.ts
  * @Description:router
  */
@@ -11,6 +11,11 @@ import Home from '@/views/home/index.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 const router = createRouter({
   history: createWebHashHistory(),
+  scrollBehavior: () => {
+    return {
+      top: 0,
+    }
+  },
   routes: [
     {
       path: '/',

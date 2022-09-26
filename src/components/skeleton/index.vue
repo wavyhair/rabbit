@@ -2,9 +2,9 @@
  * @Author: CHENJIE
  * @Date: 2022-09-11 19:49:41
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-11 19:49:55
+ * @LastEditTime: 2022-09-26 19:27:03
  * @FilePath: \rabbit-ts-vue3\src\components\skeleton\index.vue
- * @Description: 
+ * @Description: 骨架屏
 -->
 <script lang="ts" setup name="XtxSkeleton">
 defineProps({
@@ -14,7 +14,7 @@ defineProps({
   },
   width: {
     type: Number,
-    required: true,
+    // required: true,
   },
   height: {
     type: Number,
@@ -30,10 +30,11 @@ defineProps({
   },
 })
 </script>
+
 <template>
   <div
     class="xtx-skeleton"
-    :style="{ width: width + 'px', height: height + 'px' }"
+    :style="{ width: width ? width + 'px' : '100%', height: height + 'px' }"
     :class="{ shan: animated, fade: fade }"
   >
     <!-- 1 盒子-->
