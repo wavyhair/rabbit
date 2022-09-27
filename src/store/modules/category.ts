@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-07 19:20:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-25 21:53:04
+ * @LastEditTime: 2022-09-27 19:13:16
  * @FilePath: \rabbit-ts-vue3\src\store\modules\category.ts
  * @Description:category
  */
@@ -11,6 +11,8 @@ import requset from '@/utils/request'
 import {
   CategoryItem,
   CategoryItemResponse,
+  SubCategory,
+  SubCategoryResponse,
   TopCategory,
   TopCategoryResponse,
 } from '@/types/data'
@@ -23,11 +25,13 @@ const defaultCategory = topCategory.map((item) => {
 enum API {
   getAllCategory = '/home/category/head',
   getTopCategory = '/category',
+  getSubFilter = '/category/sub/filter',
 }
 export default defineStore('category', {
   state: () => ({
     list: defaultCategory as CategoryItem[],
     topCategory: {} as TopCategory,
+    subCategory: {} as SubCategory,
   }),
   actions: {
     // 获取分类
@@ -53,6 +57,12 @@ export default defineStore('category', {
         params: { id },
       })
       this.topCategory = res.data.result
+    },
+    async getSubFilter(id: string) {
+      const res = await requset.get<SubCategoryResponse>(API.getSubFilter, {
+        params: { id },
+      })
+      this.subCategory = res.data.result
     },
   },
 })

@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-07 19:20:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-25 21:49:28
+ * @LastEditTime: 2022-09-27 19:32:14
  * @FilePath: \rabbit-ts-vue3\src\types\data.d.ts
  * @Description:类型文件
  */
@@ -114,6 +114,35 @@ export type TopCategory = {
   children: CategoryItem[]
 }
 
+export type SaleProperty = {
+  id: string
+  name: string
+  properties: {
+    id: string
+    name: string
+  }[]
+}
+// 二级分类数据
+export type SubCategory = {
+  id: string
+  name: string
+  picture?: any
+  parentId: string
+  parentName: string
+  brands: {
+    id: string
+    name: string
+    nameEn: string
+    logo: string
+    picture: string
+    type?: any
+    desc: string
+    place: string
+  }[]
+  saleProperties: SaleProperty[]
+  goods: GoodItem[]
+}
+
 // CategoryItem 类型响应类型
 export type CategoryItemResponse = ApiResponse<CategoryItem[]>
 // 首页轮播图响应类型
@@ -130,3 +159,5 @@ export type HomeProductResponse = ApiResponse<HomeProduct[]>
 export type SpecialResponse = ApiResponse<Special[]>
 // 顶级分类响应类型
 export type TopCategoryResponse = ApiResponse<TopCategory>
+// 二级分类响应数据
+export type SubCategoryResponse = ApiResponse<SubCategory>
