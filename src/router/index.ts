@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 20:15:17
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-26 22:38:12
+ * @LastEditTime: 2022-09-28 19:57:38
  * @FilePath: \rabbit-ts-vue3\src\router\index.ts
  * @Description:router
  */
@@ -32,6 +32,10 @@ const router = createRouter({
         {
           path: '/category/sub/:id',
           component: () => import('@/views/category/sub.vue'),
+        },
+        {
+          path: '/product/:id',
+          component: () => import('@/views/goods/index.vue'),
         },
       ],
     },
