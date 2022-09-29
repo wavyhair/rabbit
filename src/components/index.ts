@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-11 19:38:24
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-25 21:35:28
+ * @LastEditTime: 2022-09-29 19:56:32
  * @FilePath: \rabbit-ts-vue3\src\components\index.ts
  * @Description:全局组件注册
  */
@@ -11,6 +11,7 @@ import XtxCarouse from '@/components/carouse/index.vue'
 import XtxMore from '@/components/more/index.vue'
 import Bread from '@/components/bread/index.vue'
 import BreadItem from '@/components/bread/item.vue'
+import XtxCity from '@/components/city/index.vue'
 import { App } from 'vue'
 export default {
   install(app: App) {
@@ -19,5 +20,6 @@ export default {
     app.component('XtxMore', XtxMore)
     app.component('XtxBread', Bread)
     app.component('XtxBreadItem', BreadItem)
+    app.component('XtxCity', XtxCity)
   },
 }

@@ -2,16 +2,20 @@
  * @Author: CHENJIE
  * @Date: 2022-09-28 19:55:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-28 20:42:18
+ * @LastEditTime: 2022-09-29 19:36:45
  * @FilePath: \rabbit-ts-vue3\src\views\goods\index.vue
  * @Description:goods
 -->
 <script lang="ts" name="Goods" setup>
 import GoodsImage from './components/goods-image.vue'
+import GoodsSales from './components/goods-sales.vue'
+import GoodsName from './components/goods-name.vue'
+
 import useStore from '@/store'
 import { storeToRefs } from 'pinia'
 import { watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
+
 const { goods } = useStore()
 const route = useRoute()
 watchEffect(() => {
@@ -48,8 +52,11 @@ const { info } = storeToRefs(goods)
       <div class="goods-info">
         <div class="media">
           <GoodsImage v-if="info.mainPictures" :images="info.mainPictures" />
+          <GoodsSales />
         </div>
-        <div class="spec"></div>
+        <div class="spec">
+          <GoodsName :goods="info" />
+        </div>
       </div>
       <!-- 商品详情 -->
       <div class="goods-footer">
