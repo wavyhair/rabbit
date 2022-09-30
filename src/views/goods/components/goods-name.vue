@@ -2,17 +2,23 @@
  * @Author: CHENJIE
  * @Date: 2022-09-29 19:17:16
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-29 20:02:23
- * @FilePath: \rabbit-ts-vue3\src\views\goods\components\goods-name.vue
+ * @LastEditTime: 2022-09-30 11:49:11
+ * @FilePath: /src/views/goods/components/goods-name.vue
  * @Description:goods-name
 -->
 <script lang="ts" setup name="GoodName">
+import { CityResult } from '@/components/city/index.vue'
 import { GoodsInfo } from '@/types/data'
+import { ref } from 'vue'
 
-interface Props {
+defineProps<{
   goods: GoodsInfo
+}>()
+const userAddress = ref('陕西省 咸阳市 泾阳县')
+const changeCity = (result: CityResult) => {
+  userAddress.value =
+    result.provinceName + '' + result.cityName + '' + result.countyName
 }
-defineProps<Props>()
 </script>
 <template>
   <p class="g-name">{{ goods.name }}</p>
@@ -28,7 +34,9 @@ defineProps<Props>()
     </dl>
     <dl>
       <dt>配送</dt>
-      <dd>至<XtxCity /></dd>
+      <dd>
+        至<XtxCity :user-address="userAddress" @change-city="changeCity" />
+      </dd>
     </dl>
     <dl>
       <dt>服务</dt>

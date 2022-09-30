@@ -170,6 +170,14 @@ export type GoodsInfo = {
   }[]
 }
 
+// 城市列表类型
+export type AreaList = {
+  code: string
+  level: number
+  name: string
+  areaList: AreaList[]
+}
+
 // CategoryItem 类型响应类型
 export type CategoryItemResponse = ApiResponse<CategoryItem[]>
 // 首页轮播图响应类型
@@ -190,3 +198,5 @@ export type TopCategoryResponse = ApiResponse<TopCategory>
 export type SubCategoryResponse = ApiResponse<SubCategory>
 // 商品模块响应数据
 export type GoodsInfoResponse = ApiResponse<GoodsInfo>
+//  城市列表响应数据
+export type AreaListResponse = ApiResponse<AreaList>
