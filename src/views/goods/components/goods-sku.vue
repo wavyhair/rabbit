@@ -2,41 +2,92 @@
  * @Author: CHENJIE
  * @Date: 2022-09-30 21:31:57
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-30 21:32:02
+ * @LastEditTime: 2022-10-01 23:07:04
  * @FilePath: \rabbit-ts-vue3\src\views\goods\components\goods-sku.vue
  * @Description:goods-sku
 -->
-<script setup lang="ts" name="GoodsSku"></script>
+<script setup lang="ts" name="GoodsSku">
+import bwPowerSet from '@/utils/bwPowerSet'
+import { GoodsInfo, Spec, SpecValue } from '@/types/goods'
+
+const props = defineProps<{ goods: GoodsInfo }>()
+console.log('props.goods', props.goods.specs)
+/**
+ * 选中的规格
+ * @param spec 每一个规格的所有选项
+ * @param sub 点击的选项
+ */
+const changeSelected = (spec: Spec, specValue: SpecValue) => {
+  if (specValue.disabled) return
+  if (specValue.selected) {
+    specValue.selected = false
+  } else {
+    spec.values.forEach((item) => (item.selected = false))
+    specValue.selected = true
+  }
+}
+
+const getPathMap = () => {
+  const pathMap = {} as any
+  const skus = props.goods.skus.filter((item) => {
+    return item.inventory
+  })
+  skus.forEach((sku) => {
+    // 所有可选择的 sku  ['黑色', '20cm', '中国'] 、['蓝色', '10cm', '中国']...
+    const arr = sku.specs.map((item) => item.valueName)
+    // 拿到每个 sku 的子集   [] 、['蓝色']、['20cm']、['蓝色', '20cm']、['中国']、 ['蓝色', '中国']、['20cm', '中国']、['蓝色', '20cm', '中国']
+    const powerSet = bwPowerSet(arr)
+    powerSet.forEach((sub) => {
+      const key = sub.join('+')
+      if (pathMap[key]) {
+        pathMap[key].push(sku.id)
+      } else {
+        pathMap[key] = [sku.id]
+      }
+    })
+  })
+  return pathMap
+}
+
+// 获取路径字典
+const pathMap = getPathMap()
+// 初始化更新状态
+const updateDisStatus = () => {
+  props.goods.specs.forEach((spec) => {
+    console.log('spec', spec)
+    spec.values.forEach((values) => {
+      // 如果在路径字典里面找到了 name 就不禁用 否则 禁用
+      if (values.name in pathMap) {
+        values.disabled = false
+      } else {
+        values.disabled = true
+      }
+    })
+  })
+}
+updateDisStatus()
+</script>
 <template>
   <div class="goods-sku">
-    <dl>
-      <dt>颜色</dt>
+    <dl v-for="item in goods.specs" :key="item.name">
+      <dt>{{ item.name }}</dt>
       <dd>
-        <img
-          class="selected"
-          src="https://yanxuan-item.nosdn.127.net/d77c1f9347d06565a05e606bd4f949e0.png"
-          alt=""
-        />
-        <img
-          class="disabled"
-          src="https://yanxuan-item.nosdn.127.net/d77c1f9347d06565a05e606bd4f949e0.png"
-          alt=""
-        />
-      </dd>
-    </dl>
-    <dl>
-      <dt>尺寸</dt>
-      <dd>
-        <span class="disabled">10英寸</span>
-        <span class="selected">20英寸</span>
-        <span>30英寸</span>
-      </dd>
-    </dl>
-    <dl>
-      <dt>版本</dt>
-      <dd>
-        <span>美版</span>
-        <span>港版</span>
+        <template v-for="sub in item.values" :key="sub.name">
+          <img
+            v-if="sub.picture"
+            :class="{ selected: sub.selected, disabled: sub.disabled }"
+            :src="sub.picture"
+            :title="sub.name"
+            alt=""
+            @click="changeSelected(item, sub)"
+          />
+          <span
+            v-else
+            :class="{ selected: sub.selected, disabled: sub.disabled }"
+            @click="changeSelected(item, sub)"
+            >{{ sub.name }}</span
+          >
+        </template>
       </dd>
     </dl>
   </div>

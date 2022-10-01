@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-07 19:20:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-28 20:03:19
+ * @LastEditTime: 2022-10-01 16:34:28
  * @FilePath: \rabbit-ts-vue3\src\types\data.d.ts
  * @Description:类型文件
  */
@@ -143,33 +143,6 @@ export type SubCategory = {
   goods: GoodItem[]
 }
 
-// 商品模块的类型声明
-export type GoodsInfo = {
-  id: string
-  name: string
-  spuCode: string
-  desc: string
-  price: string
-  oldPrice: string
-  discount: number
-  inventory: number
-  salesCount: number
-  commentCount: number
-  collectCount: number
-  mainVideos: any[]
-  videoScale: number
-  mainPictures: string[]
-  isPreSale: boolean
-  isCollect?: any
-  recommends?: any
-  userAddresses?: any
-  evaluationInfo?: any
-  categories: {
-    id: string
-    name: string
-  }[]
-}
-
 // 城市列表类型
 export type AreaList = {
   code: string
@@ -196,7 +169,6 @@ export type SpecialResponse = ApiResponse<Special[]>
 export type TopCategoryResponse = ApiResponse<TopCategory>
 // 二级分类响应数据
 export type SubCategoryResponse = ApiResponse<SubCategory>
-// 商品模块响应数据
-export type GoodsInfoResponse = ApiResponse<GoodsInfo>
+
 //  城市列表响应数据
 export type AreaListResponse = ApiResponse<AreaList>

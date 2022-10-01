@@ -2,11 +2,11 @@
  * @Author: CHENJIE
  * @Date: 2022-09-28 20:03:42
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-28 20:07:59
+ * @LastEditTime: 2022-10-01 16:35:03
  * @FilePath: \rabbit-ts-vue3\src\store\modules\goods.ts
  * @Description:goods模块
  */
-import { GoodsInfo, GoodsInfoResponse } from '@/types/data'
+import { GoodsInfo, GoodsInfoResponse } from '@/types/goods'
 import request from '@/utils/request'
 import { defineStore } from 'pinia'
 

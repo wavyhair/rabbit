@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-28 19:55:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-30 21:32:37
+ * @LastEditTime: 2022-10-01 23:04:47
  * @FilePath: \rabbit-ts-vue3\src\views\goods\index.vue
  * @Description:goods
 -->
@@ -55,9 +55,9 @@ const { info } = storeToRefs(goods)
           <GoodsImage v-if="info.mainPictures" :images="info.mainPictures" />
           <GoodsSales />
         </div>
-        <div class="spec">
+        <div class="spec" v-if="info.id">
           <GoodsName :goods="info" />
-          <GoodsSku />
+          <GoodsSku :goods="info" />
         </div>
       </div>
       <!-- 商品详情 -->
