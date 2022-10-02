@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-07 20:01:23
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-27 19:41:13
+ * @LastEditTime: 2022-10-02 20:03:48
  * @FilePath: \rabbit-ts-vue3\src\views\category\sub.vue
  * @Description: category
 -->
@@ -88,7 +88,7 @@ watchEffect(() => {
           </div>
         </div>
         <!-- 商品列表 -->
-        <ul v-if="category.subCategory.goods.length > 0">
+        <ul v-if="category.subCategory?.goods?.length > 0">
           <li v-for="goods in category.subCategory.goods" :key="goods.id">
             <GoodsItem :goods="goods" />
           </li>
