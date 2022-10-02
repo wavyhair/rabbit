@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-28 20:03:42
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-01 16:35:03
+ * @LastEditTime: 2022-10-02 21:38:53
  * @FilePath: \rabbit-ts-vue3\src\store\modules\goods.ts
  * @Description:goods模块
  */

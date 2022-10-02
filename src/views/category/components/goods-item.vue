@@ -2,25 +2,30 @@
  * @Author: CHENJIE
  * @Date: 2022-09-26 19:54:21
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-26 22:35:56
+ * @LastEditTime: 2022-10-02 21:14:56
  * @FilePath: \rabbit-ts-vue3\src\views\category\components\goods-item.vue
  * @Description:goods-item
 -->
 
 <script lang="ts" setup name="GoodsItem">
 import { GoodItem } from '@/types/data'
+import { PropType } from 'vue'
 
-interface Props {
-  goods: GoodItem
-}
-const props = defineProps<Props>()
+defineProps({
+  goods: {
+    type: Object as PropType<GoodItem>,
+    default: () => {
+      return {}
+    },
+  },
+})
 </script>
 <template>
   <RouterLink to="/" class="goods-item">
-    <img v-lazy="props.goods.picture" alt="" />
-    <p class="name ellipsis">{{ props.goods.name }}</p>
-    <p class="desc ellipsis">{{ props.goods.desc }}</p>
-    <p class="price">&yen;{{ props.goods.price }}</p>
+    <img v-lazy="goods.picture" alt="" />
+    <p class="name ellipsis">{{ goods.name }}</p>
+    <p class="desc ellipsis">{{ goods.desc }}</p>
+    <p class="price">&yen;{{ goods.price }}</p>
   </RouterLink>
 </template>
 <style scoped lang="less">

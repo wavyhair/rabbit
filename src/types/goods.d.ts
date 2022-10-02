@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-10-01 16:31:57
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-01 22:50:54
+ * @LastEditTime: 2022-10-02 20:58:59
  * @FilePath: \rabbit-ts-vue3\src\types\goods.d.ts
  * @Description:商品模块类型
  */
@@ -35,6 +35,15 @@ export type Sku = {
   }[]
 }
 
+// 商品详情
+type GoodsDetail = {
+  pictures: string[]
+  properties: {
+    name: string
+    value: string
+  }[]
+}
+
 // 商品模块的类型声明
 export type GoodsInfo = {
   id: string
@@ -62,6 +71,7 @@ export type GoodsInfo = {
     name: string
   }[]
   specs: Spec[]
+  details: GoodsDetail
 }
 // 商品模块响应数据
 export type GoodsInfoResponse = ApiResponse<GoodsInfo>

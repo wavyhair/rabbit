@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-28 19:55:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-02 20:54:12
+ * @LastEditTime: 2022-10-02 22:12:29
  * @FilePath: \rabbit-ts-vue3\src\views\goods\index.vue
  * @Description:goods
 -->
@@ -10,12 +10,14 @@
 import GoodsImage from './components/goods-image.vue'
 import GoodsSales from './components/goods-sales.vue'
 import GoodsName from './components/goods-name.vue'
+import GoodsSku from './components/goods-sku.vue'
+import GoodsDetali from './components/goods-detali.vue'
+import GoodsHot from './components/goods-hot.vue'
 
 import useStore from '@/store'
 import { storeToRefs } from 'pinia'
 import { ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
-import GoodsSku from './components/goods-sku.vue'
 
 const { goods } = useStore()
 const route = useRoute()
@@ -62,12 +64,12 @@ const count = ref(5)
         :height="24"
       />
       <!-- 商品信息 -->
-      <div class="goods-info">
+      <div class="goods-info" v-if="info.id">
         <div class="media">
-          <GoodsImage v-if="info.mainPictures" :images="info.mainPictures" />
+          <GoodsImage :images="info.mainPictures" />
           <GoodsSales />
         </div>
-        <div class="spec" v-if="info.id">
+        <div class="spec">
           <GoodsName :goods="info" />
           <!-- sku 组件 -->
           <GoodsSku :goods="info" @selChange="selChange" />
@@ -78,13 +80,17 @@ const count = ref(5)
         </div>
       </div>
       <!-- 商品详情 -->
-      <div class="goods-footer">
+      <div class="goods-footer" v-if="info.id">
         <div class="goods-article">
           <!-- 商品+评价 -->
-          <div class="goods-tabs"></div>
+          <div class="goods-tabs"><GoodsDetali :goods="info" /></div>
         </div>
         <!-- 24热榜+专题推荐 -->
-        <div class="goods-aside"></div>
+        <div class="goods-aside">
+          <GoodsHot :type="1" />
+          <GoodsHot :type="2" />
+          <GoodsHot :type="3" />
+        </div>
       </div>
     </div>
   </div>
