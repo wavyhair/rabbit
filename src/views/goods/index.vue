@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-28 19:55:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-01 23:04:47
+ * @LastEditTime: 2022-10-02 17:38:08
  * @FilePath: \rabbit-ts-vue3\src\views\goods\index.vue
  * @Description:goods
 -->
@@ -22,10 +22,21 @@ const route = useRoute()
 watchEffect(() => {
   const id = route.params.id as string
   if (route.fullPath === `/product/${id}`) {
+    // 这里需要先清空 goodInfo 数据 ，因为 sku 组件是否渲染是根据 info 里面有没有数据决定的， 切换页面的时候 info 里面的数据没有被清空，再进来，会有导致有两份数据源，
+    // 一份是之前的数据，一份是发请求获取的数据 ，而 setup 的方法只会在第一次渲染的时候执行，就会造成发请求回来的数据没有经过方法的处理就更新到页面，就会出现所有按钮都没禁用的异常行为。
+    goods.$reset()
     goods.getGoodsInfo(id)
   }
 })
 const { info } = storeToRefs(goods)
+const selChange = (skuId: string) => {
+  const selSku = info.value.skus.find((sku) => sku.id === skuId)
+  if (selSku) {
+    info.value.inventory = selSku.inventory
+    info.value.price = selSku.price
+    info.value.oldPrice = selSku.oldPrice
+  }
+}
 </script>
 <template>
   <div class="xtx-goods-page">
@@ -57,7 +68,7 @@ const { info } = storeToRefs(goods)
         </div>
         <div class="spec" v-if="info.id">
           <GoodsName :goods="info" />
-          <GoodsSku :goods="info" />
+          <GoodsSku :goods="info" @selChange="selChange" />
         </div>
       </div>
       <!-- 商品详情 -->
