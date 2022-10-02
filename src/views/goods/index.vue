@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-28 19:55:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-02 20:34:15
+ * @LastEditTime: 2022-10-02 20:54:12
  * @FilePath: \rabbit-ts-vue3\src\views\goods\index.vue
  * @Description:goods
 -->
@@ -72,7 +72,9 @@ const count = ref(5)
           <!-- sku 组件 -->
           <GoodsSku :goods="info" @selChange="selChange" />
           <!-- 数量选择组件 -->
-          <XtxNumber v-model:count="count" showLabel />
+          <XtxNumber v-model:count="count" :max="info.inventory" showLabel />
+          <!-- 按钮 -->
+          <XtxButton class="xtx_btn" type="primary">加入购物车</XtxButton>
         </div>
       </div>
       <!-- 商品详情 -->
@@ -101,6 +103,9 @@ const count = ref(5)
   .spec {
     flex: 1;
     padding: 30px 30px 30px 0;
+    .xtx_btn {
+      margin-top: 20px;
+    }
   }
 }
 .goods-footer {

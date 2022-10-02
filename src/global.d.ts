@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-11 19:48:50
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-02 20:01:48
+ * @LastEditTime: 2022-10-02 20:49:54
  * @FilePath: \rabbit-ts-vue3\src\global.d.ts
  * @Description:全局组件类型文件
  */
@@ -19,6 +19,7 @@ import XtxBread from '@/components/bread/index.vue'
 import XtxBreadItem from '@/components/bread/item.vue'
 import XtxCity from '@/components/city/index.vue'
 import XtxNumber from '@/components/XtxNumbox/index.vue'
+import XtxButton from '@/components/XtxButton/index.vue'
 declare module 'vue' {
   export interface GlobalComponents {
     XtxSkeleton: typeof XtxSkeleton
@@ -28,6 +29,7 @@ declare module 'vue' {
     XtxBreadItem: typeof XtxBreadItem
     XtxCity: typeof XtxCity
     XtxNumber: typeof XtxNumber
+    XtxButton: typeof XtxButton
   }
 }
 export {}
