@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-28 19:55:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-02 17:38:08
+ * @LastEditTime: 2022-10-02 20:34:15
  * @FilePath: \rabbit-ts-vue3\src\views\goods\index.vue
  * @Description:goods
 -->
@@ -13,7 +13,7 @@ import GoodsName from './components/goods-name.vue'
 
 import useStore from '@/store'
 import { storeToRefs } from 'pinia'
-import { watchEffect } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import GoodsSku from './components/goods-sku.vue'
 
@@ -37,6 +37,7 @@ const selChange = (skuId: string) => {
     info.value.oldPrice = selSku.oldPrice
   }
 }
+const count = ref(5)
 </script>
 <template>
   <div class="xtx-goods-page">
@@ -68,7 +69,10 @@ const selChange = (skuId: string) => {
         </div>
         <div class="spec" v-if="info.id">
           <GoodsName :goods="info" />
+          <!-- sku 组件 -->
           <GoodsSku :goods="info" @selChange="selChange" />
+          <!-- 数量选择组件 -->
+          <XtxNumber v-model:count="count" showLabel />
         </div>
       </div>
       <!-- 商品详情 -->
