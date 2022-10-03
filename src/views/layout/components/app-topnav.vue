@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 22:00:33
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-06 22:00:41
+ * @LastEditTime: 2022-10-03 10:42:27
  * @FilePath: \rabbit-ts-vue3\src\views\layout\components\app-topnav.vue
  * @Description: app-topnav.vue
 -->
@@ -16,7 +16,7 @@
           <a href="javascript:;"><i class="iconfont icon-user"></i>周杰伦</a>
         </li>
         <li><a href="javascript:;">退出登录</a></li>
-        <li><a href="javascript:;">请先登录</a></li>
+        <li><RouterLink to="/login">请先登录</RouterLink></li>
         <li><a href="javascript:;">免费注册</a></li>
         <li><a href="javascript:;">我的订单</a></li>
         <li><a href="javascript:;">会员中心</a></li>
