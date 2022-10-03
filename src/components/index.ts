@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-11 19:38:24
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-02 20:49:25
+ * @LastEditTime: 2022-10-03 11:45:53
  * @FilePath: \rabbit-ts-vue3\src\components\index.ts
  * @Description:全局组件注册
  */
@@ -12,9 +12,11 @@ import XtxMore from '@/components/more/index.vue'
 import Bread from '@/components/bread/index.vue'
 import BreadItem from '@/components/bread/item.vue'
 import XtxCity from '@/components/city/index.vue'
-import XtxNumber from '@/components/XtxNumbox/index.vue'
+import XtxNumber from '@/components/XtxNumber/index.vue'
 import XtxButton from '@/components/XtxButton/index.vue'
+import XtxCheckBox from '@/components/XtxCheckbox/index.vue'
 import { App } from 'vue'
+
 export default {
   install(app: App) {
     app.component('XtxSkeleton', XtxSkeleton)
@@ -25,5 +27,6 @@ export default {
     app.component('XtxCity', XtxCity)
     app.component('XtxNumber', XtxNumber)
     app.component('XtxButton', XtxButton)
+    app.component('XtxCheckBox', XtxCheckBox)
   },
 }

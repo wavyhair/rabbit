@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 
 const type = ref<'account' | 'mobile'>('account')
+const isAgree = ref(true)
 </script>
 <template>
   <div class="account-box">
@@ -46,7 +47,7 @@ const type = ref<'account' | 'mobile'>('account')
       </template>
       <div class="form-item">
         <div class="agree">
-          <span>我已同意</span>
+          <XtxCheckBox v-model="isAgree">我已同意</XtxCheckBox>
           <a href="javascript:;">《隐私条款》</a>
           <span>和</span>
           <a href="javascript:;">《服务条款》</a>
