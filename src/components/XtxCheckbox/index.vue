@@ -2,13 +2,11 @@
  * @Author: CHENJIE
  * @Date: 2022-10-03 11:25:59
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-03 11:56:06
+ * @LastEditTime: 2022-10-03 11:58:35
  * @FilePath: \rabbit-ts-vue3\src\components\XtxCheckbox\index.vue
  * @Description:复选框组件
 -->
 <script lang="ts" setup name="XtxCheckbox">
-import { emit } from 'process'
-
 const props = defineProps({
   modelValue: {
     type: Boolean,

@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-11 19:38:24
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-03 11:45:53
+ * @LastEditTime: 2022-10-03 14:46:26
  * @FilePath: \rabbit-ts-vue3\src\components\index.ts
  * @Description:全局组件注册
  */
@@ -14,7 +14,7 @@ import BreadItem from '@/components/bread/item.vue'
 import XtxCity from '@/components/city/index.vue'
 import XtxNumber from '@/components/XtxNumber/index.vue'
 import XtxButton from '@/components/XtxButton/index.vue'
-import XtxCheckBox from '@/components/XtxCheckbox/index.vue'
+import XtxCheckBox from '@/components/XtxCheckBox/index.vue'
 import { App } from 'vue'
 
 export default {
