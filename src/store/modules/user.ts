@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-10-05 10:41:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-05 11:00:31
+ * @LastEditTime: 2022-10-05 12:02:01
  * @FilePath: \rabbit-ts-vue3\src\store\modules\user.ts
  * @Description:user
  */
@@ -42,6 +42,10 @@ export default defineStore('user', {
       })
       // 1. 保存用户信息到 state 中
       this.profile = res.data.result
+    },
+    logout() {
+      this.profile = {} as Profile
+      sessionStorage.removeItem(PROFILE_KEY)
     },
   },
 })

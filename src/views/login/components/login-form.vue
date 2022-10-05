@@ -1,20 +1,59 @@
 <script lang="ts" setup name="LoginForm">
+import useStore from '@/store'
+
+import { useField, useForm } from 'vee-validate'
 import Message from '@/components/XtxMessage'
 import { ref } from 'vue'
-
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const { user } = useStore()
 const type = ref<'account' | 'mobile'>('account')
-const isAgree = ref(true)
-const login = () => {
-  Message.success('成功')
+// 表单校验
+const { validate } = useForm({
+  // 提供校验规则
+  validationSchema: {
+    account: (value: string) => {
+      // 校验的value值
+      // value是将来使用该规则的表单元素的值
+      // 1. 必填
+      // 2. 6-20个字符，需要以字母开头
+      // 如何反馈校验成功还是失败，返回true才是成功，其他情况失败，返回失败原因。
+      if (!value) return '请输入用户名'
+      if (!/^[a-zA-Z]\w{5,19}$/.test(value)) return '字母开头且6-20个字符'
+      return true
+    },
+    password: (value: string) => {
+      if (!value) return '请输入密码'
+      if (!/^\w{6,12}$/.test(value)) return '密码必须是6-24位字符'
+      return true
+    },
+    isAgree: (value: boolean) => {
+      if (!value) return '请同意隐私条款'
+      return true
+    },
+  },
+})
+const { value: account, errorMessage: accountError } =
+  useField<string>('account')
+const { value: password, errorMessage: passwordError } =
+  useField<string>('password')
+const { value: isAgree, errorMessage: isAgreeError } =
+  useField<boolean>('isAgree')
+const login = async () => {
+  const { valid } = await validate()
+  if (!valid) return
+  user.login(account.value, password.value)
+  router.push('/')
+  Message.success('登录成功')
 }
 </script>
 <template>
   <div class="account-box">
     <div class="toggle">
-      <a v-if="type === 'mobile'" href="javascript:;" @click="type = 'account'">
+      <a href="javascript:;" @click="type = 'account'" v-if="type === 'mobile'">
         <i class="iconfont icon-user"></i> 使用账号登录
       </a>
-      <a href="javascript:;" v-else @click="type = 'mobile'">
+      <a href="javascript:;" @click="type = 'mobile'" v-else>
         <i class="iconfont icon-msg"></i> 使用短信登录
       </a>
     </div>
@@ -23,38 +62,40 @@ const login = () => {
         <div class="form-item">
           <div class="input">
             <i class="iconfont icon-user"></i>
-            <input type="text" placeholder="请输入用户名或手机号" />
+            <input
+              type="text"
+              v-model="account"
+              placeholder="请输入用户名或手机号"
+            />
           </div>
-          <!-- <div class="error"><i class="iconfont icon-warning" />请输入手机号</div> -->
+          <div class="error" v-if="accountError">
+            <i class="iconfont icon-warning" />{{ accountError }}
+          </div>
         </div>
         <div class="form-item">
           <div class="input">
             <i class="iconfont icon-lock"></i>
-            <input type="password" placeholder="请输入密码" />
+            <input
+              type="password"
+              v-model="password"
+              placeholder="请输入密码"
+            />
           </div>
-        </div>
-      </template>
-      <template v-else>
-        <div class="form-item">
-          <div class="input">
-            <i class="iconfont icon-user"></i>
-            <input type="text" placeholder="请输入手机号" />
-          </div>
-        </div>
-        <div class="form-item">
-          <div class="input">
-            <i class="iconfont icon-code"></i>
-            <input type="password" placeholder="请输入验证码" />
-            <span class="code">发送验证码</span>
+          <div class="error" v-if="passwordError">
+            <i class="iconfont icon-warning" />{{ passwordError }}
           </div>
         </div>
       </template>
       <div class="form-item">
         <div class="agree">
-          <XtxCheckBox v-model="isAgree">我已同意</XtxCheckBox>
+          <XtxCheckBox v-model="isAgree"></XtxCheckBox>
+          <span>我已同意</span>
           <a href="javascript:;">《隐私条款》</a>
           <span>和</span>
           <a href="javascript:;">《服务条款》</a>
+        </div>
+        <div class="error" v-if="isAgreeError">
+          <i class="iconfont icon-warning" />{{ isAgreeError }}
         </div>
       </div>
       <a href="javascript:;" class="btn" @click="login">登录</a>
