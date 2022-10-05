@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 22:00:33
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-05 22:00:46
+ * @LastEditTime: 2022-10-05 23:46:50
  * @FilePath: \rabbit-ts-vue3\src\views\layout\components\app-topnav.vue
  * @Description: app-topnav.vue
 -->
@@ -23,7 +23,10 @@ const logout = () => {
       <ul>
         <li v-if="user.profile.token">
           <a href="javascript:;"
-            ><i class="iconfont icon-user"></i>{{ user.profile.nickname }}</a
+            ><i class="iconfont icon-user"></i
+            >{{
+              user.profile.nickname || user.profile.account || '楚青师哥'
+            }}</a
           >
         </li>
         <li v-if="!user.profile.token">

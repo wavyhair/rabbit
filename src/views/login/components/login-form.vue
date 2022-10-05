@@ -1,39 +1,25 @@
 <script lang="ts" setup name="LoginForm">
+import { useCountDown } from '@/hooks/index'
+import { validateRules } from '@/utils/validateRules'
 import useStore from '@/store'
 
 import { useField, useForm } from 'vee-validate'
 import Message from '@/components/XtxMessage'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const { user } = useStore()
+const { time, start } = useCountDown()
 const type = ref<'account' | 'mobile'>('account')
 // 表单校验
-const { validate } = useForm({
+const { validate, resetForm } = useForm({
   // 提供校验规则
-  validationSchema: {
-    account: (value: string) => {
-      // 校验的value值
-      // value是将来使用该规则的表单元素的值
-      // 1. 必填
-      // 2. 6-20个字符，需要以字母开头
-      // 如何反馈校验成功还是失败，返回true才是成功，其他情况失败，返回失败原因。
-      if (!value) return '请输入用户名'
-      if (!/^[a-zA-Z]\w{5,19}$/.test(value)) return '字母开头且6-20个字符'
-      return true
-    },
-    password: (value: string) => {
-      if (!value) return '请输入密码'
-      if (!/^\w{6,12}$/.test(value)) return '密码必须是6-24位字符'
-      return true
-    },
-    isAgree: (value: boolean) => {
-      if (!value) return '请同意隐私条款'
-      return true
-    },
-  },
+  validationSchema: validateRules,
 })
-
+// 切换时候重置表单规则
+watch(type, () => {
+  resetForm()
+})
 // account: "cdshi0088",
 // password: "123456",
 const { value: account, errorMessage: accountError } =
@@ -42,12 +28,35 @@ const { value: password, errorMessage: passwordError } =
   useField<string>('password')
 const { value: isAgree, errorMessage: isAgreeError } =
   useField<boolean>('isAgree')
+const {
+  value: mobile,
+  errorMessage: mobileError,
+  validate: validateMobile,
+} = useField<string>('mobile')
+const { value: code, errorMessage: codeError } = useField<string>('code')
+
 const login = async () => {
-  const { valid } = await validate()
-  if (!valid) return
-  await user.login(account.value, password.value)
+  const res = await validate()
+  if (type.value === 'account') {
+    if (res.errors.account || res.errors.password || res.errors.isAgree) return
+    await user.login(account.value, password.value)
+  } else {
+    if (res.errors.mobile || res.errors.code || res.errors.isAgree) return
+    await user.mobileLogin(mobile.value, code.value)
+  }
   router.push('/')
   Message.success('登录成功')
+}
+
+const mobileRef = ref<HTMLInputElement | null>(null)
+const send = async () => {
+  const res = await validateMobile()
+  if (!res.valid) {
+    return mobileRef.value?.focus()
+  }
+  await user.sendMobileMsg(mobile.value)
+  start()
+  Message.success('获取验证码成功')
 }
 </script>
 <template>
@@ -86,6 +95,34 @@ const login = async () => {
           </div>
           <div class="error" v-if="passwordError">
             <i class="iconfont icon-warning" />{{ passwordError }}
+          </div>
+        </div>
+      </template>
+      <template v-else>
+        <div class="form-item">
+          <div class="input">
+            <i class="iconfont icon-user"></i>
+            <input
+              ref="mobileRef"
+              type="text"
+              v-model="mobile"
+              placeholder="请输入手机号"
+            />
+          </div>
+          <div class="error" v-if="mobileError">
+            <i class="iconfont icon-warning" />{{ mobileError }}
+          </div>
+        </div>
+        <div class="form-item">
+          <div class="input">
+            <i class="iconfont icon-code"></i>
+            <input type="text" v-model="code" placeholder="请输入验证码" />
+            <span class="code" @click="send">{{
+              time > 0 ? time : '发送验证码'
+            }}</span>
+          </div>
+          <div class="error" v-if="codeError">
+            <i class="iconfont icon-warning" />{{ codeError }}
           </div>
         </div>
       </template>
