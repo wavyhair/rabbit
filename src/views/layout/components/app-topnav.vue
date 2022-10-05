@@ -2,22 +2,40 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 22:00:33
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-03 10:42:27
+ * @LastEditTime: 2022-10-05 22:00:46
  * @FilePath: \rabbit-ts-vue3\src\views\layout\components\app-topnav.vue
  * @Description: app-topnav.vue
 -->
-<script lang="ts" setup name="AppTopnav"></script>
+<script lang="ts" setup name="AppTopnav">
+import useStore from '@/store'
+import { useRouter } from 'vue-router'
+const { user } = useStore()
+const router = useRouter()
+const logout = () => {
+  user.logout()
+  router.push('/login')
+}
+</script>
 
 <template>
   <nav class="app-topnav">
     <div class="container">
       <ul>
-        <li>
-          <a href="javascript:;"><i class="iconfont icon-user"></i>周杰伦</a>
+        <li v-if="user.profile.token">
+          <a href="javascript:;"
+            ><i class="iconfont icon-user"></i>{{ user.profile.nickname }}</a
+          >
         </li>
-        <li><a href="javascript:;">退出登录</a></li>
-        <li><RouterLink to="/login">请先登录</RouterLink></li>
-        <li><a href="javascript:;">免费注册</a></li>
+        <li v-if="!user.profile.token">
+          <RouterLink to="/login">请先登录</RouterLink>
+        </li>
+
+        <li v-else><a href="javascript:;" @click="logout">退出登录</a></li>
+        <li>
+          <a href="javascript:;" @click="router.push('/registration')"
+            >免费注册</a
+          >
+        </li>
         <li><a href="javascript:;">我的订单</a></li>
         <li><a href="javascript:;">会员中心</a></li>
         <li><a href="javascript:;">帮助中心</a></li>

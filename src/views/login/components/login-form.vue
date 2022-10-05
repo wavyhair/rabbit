@@ -33,6 +33,9 @@ const { validate } = useForm({
     },
   },
 })
+
+// account: "cdshi0088",
+// password: "123456",
 const { value: account, errorMessage: accountError } =
   useField<string>('account')
 const { value: password, errorMessage: passwordError } =
@@ -42,7 +45,7 @@ const { value: isAgree, errorMessage: isAgreeError } =
 const login = async () => {
   const { valid } = await validate()
   if (!valid) return
-  user.login(account.value, password.value)
+  await user.login(account.value, password.value)
   router.push('/')
   Message.success('登录成功')
 }
