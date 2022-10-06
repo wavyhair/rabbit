@@ -2,13 +2,13 @@
  * @Author: CHENJIE
  * @Date: 2022-09-29 19:17:16
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-30 11:49:11
- * @FilePath: /src/views/goods/components/goods-name.vue
+ * @LastEditTime: 2022-10-06 18:17:22
+ * @FilePath: \rabbit-ts-vue3\src\views\goods\components\goods-name.vue
  * @Description:goods-name
 -->
 <script lang="ts" setup name="GoodName">
 import { CityResult } from '@/components/city/index.vue'
-import { GoodsInfo } from '@/types/data'
+import { GoodsInfo } from '@/types/goods'
 import { ref } from 'vue'
 
 defineProps<{
