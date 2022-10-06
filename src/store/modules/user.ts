@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-10-05 10:41:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-05 23:01:38
+ * @LastEditTime: 2022-10-06 12:23:11
  * @FilePath: \rabbit-ts-vue3\src\store\modules\user.ts
  * @Description:user
  */
@@ -14,6 +14,11 @@ import { defineStore } from 'pinia'
 enum API {
   login = '/login',
   sendMobileMsg = '/login/code',
+  qqLogin = '/login/social',
+  sendQQBindMsg = '/login/social/code',
+  qqBindLogin = '/login/social/bind',
+  sendQQPathMsg = '/register/code',
+  qqPatchLogin = '/login/social/',
 }
 /**
  * 个人信息本地存储字段名称
@@ -48,11 +53,57 @@ export default defineStore('user', {
         },
       })
     },
+    // 手机号登录
     async mobileLogin(mobile: string, code: string) {
       const res = await request.post<ProfileRes>('/login/code', {
         mobile,
         code,
       })
+      // 1. 保存用户信息到 state 中
+      this.profile = res.data.result
+      setProfile(res.data.result)
+    },
+    //  source: 1为pc，2为webapp，3为微信小程序, 4为Android, 5为ios, 6为qq, 7为微信
+    async qqLogin(openId: string) {
+      const res = await request.post<ProfileRes>(API.qqLogin, {
+        unionId: openId,
+        source: 6,
+      })
+      // 1. 保存用户信息到 state 中
+      this.profile = res.data.result
+      setProfile(res.data.result)
+    },
+    // 绑定qq的短信验证码
+    async sendQQBindMsg(mobile: string) {
+      await request.get(API.sendQQBindMsg, {
+        params: {
+          mobile,
+        },
+      })
+    },
+    async qqBindLogin(openId: string, mobile: string, code: string) {
+      const res = await request.post<ProfileRes>(API.qqBindLogin, {
+        mobile,
+        code,
+        unionId: openId,
+      })
+      // 1. 保存用户信息到 state 中
+      this.profile = res.data.result
+      setProfile(res.data.result)
+    },
+    async sendQQPathMsg(mobile: string) {
+      await request.get(API.sendQQPathMsg, {
+        params: {
+          mobile,
+        },
+      })
+    },
+
+    async qqPatchLogin(data: any) {
+      const res = await request.post<ProfileRes>(
+        `${API.qqBindLogin}${data.openId}/complement`,
+        data
+      )
       // 1. 保存用户信息到 state 中
       this.profile = res.data.result
       setProfile(res.data.result)

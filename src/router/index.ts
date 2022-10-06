@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 20:15:17
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-05 21:45:21
+ * @LastEditTime: 2022-10-06 10:13:41
  * @FilePath: \rabbit-ts-vue3\src\router\index.ts
  * @Description:router
  */
@@ -42,6 +42,10 @@ const router = createRouter({
     {
       path: '/login',
       component: () => import('@/views/login/index.vue'),
+    },
+    {
+      path: '/login/callback',
+      component: () => import('@/views/login/callback.vue'),
     },
     {
       path: '/registration',
