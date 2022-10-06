@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 18:46:37
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-04 23:00:07
+ * @LastEditTime: 2022-10-06 18:43:15
  * @FilePath: \rabbit-ts-vue3\vite.config.ts
  * @Description: vite.config
  */
@@ -19,6 +19,7 @@ export default defineConfig({
     }),
     vueSetupExtend(),
   ],
+  base: '/rabbit-ts-vue3.2/',
   server: {
     // QQ三方登录的回调uri为：http://www.corho.com:8080/#/login/callback
     // vite 中配置： www.corho.com:8080
