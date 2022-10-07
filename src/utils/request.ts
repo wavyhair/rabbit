@@ -2,13 +2,13 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 18:50:37
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-05 13:01:49
+ * @LastEditTime: 2022-10-07 11:58:23
  * @FilePath: \rabbit-ts-vue3\src\utils\request.ts
  * @Description: request
  */
 import Message from '@/components/XtxMessage'
 import axios, { AxiosError } from 'axios'
-
+import useStore from '@/store'
 // 备用接口地址: http://pcapi-xiaotuxian-front-devtest.itheima.net/
 export const baseURL = 'http://pcapi-xiaotuxian-front-devtest.itheima.net/'
 
@@ -17,11 +17,15 @@ const instance = axios.create({
   baseURL,
   timeout: 5000,
 })
-
 // 添加请求拦截器
 instance.interceptors.request.use(
   function (config) {
+    const { user } = useStore()
+    const TOKEN = user.profile.token
     // 在发送请求之前做些什么
+    if (TOKEN) {
+      config.headers!.Authorization = `Bearer ${TOKEN}`
+    }
     return config
   },
   function (error) {

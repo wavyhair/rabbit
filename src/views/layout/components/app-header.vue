@@ -2,12 +2,13 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 22:04:58
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-06 22:10:01
+ * @LastEditTime: 2022-10-07 10:35:20
  * @FilePath: \rabbit-ts-vue3\src\views\layout\components\app-header.vue
  * @Description: app-header
 -->
 <script lang="ts" setup name="AppHeader">
 import AppHeaderNavVue from './app-header-nav.vue'
+import AppHeaderCart from './app-header-cart.vue'
 </script>
 
 <template>
@@ -19,11 +20,7 @@ import AppHeaderNavVue from './app-header-nav.vue'
         <i class="iconfont icon-search"></i>
         <input type="text" placeholder="搜一搜" />
       </div>
-      <div class="cart">
-        <a class="curr" href="#">
-          <i class="iconfont icon-cart"></i><em>2</em>
-        </a>
-      </div>
+      <AppHeaderCart />
     </div>
   </header>
 </template>

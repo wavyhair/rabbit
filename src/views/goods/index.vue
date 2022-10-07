@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-28 19:55:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-02 22:12:29
+ * @LastEditTime: 2022-10-07 10:33:10
  * @FilePath: \rabbit-ts-vue3\src\views\goods\index.vue
  * @Description:goods
 -->
@@ -18,8 +18,9 @@ import useStore from '@/store'
 import { storeToRefs } from 'pinia'
 import { ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
+import Message from '@/components/XtxMessage'
 
-const { goods } = useStore()
+const { goods, cart } = useStore()
 const route = useRoute()
 watchEffect(() => {
   const id = route.params.id as string
@@ -31,7 +32,9 @@ watchEffect(() => {
   }
 })
 const { info } = storeToRefs(goods)
+const currentSkuId = ref('')
 const selChange = (skuId: string) => {
+  currentSkuId.value = skuId
   const selSku = info.value.skus.find((sku) => sku.id === skuId)
   if (selSku) {
     info.value.inventory = selSku.inventory
@@ -39,7 +42,12 @@ const selChange = (skuId: string) => {
     info.value.oldPrice = selSku.oldPrice
   }
 }
-const count = ref(5)
+const count = ref(1)
+const addCart = () => {
+  if (!currentSkuId.value) return Message.warning('请选择完整规格')
+  cart.addCart({ count: count.value, skuId: currentSkuId.value })
+  Message.success('加入购物车成功')
+}
 </script>
 <template>
   <div class="xtx-goods-page">
@@ -76,7 +84,9 @@ const count = ref(5)
           <!-- 数量选择组件 -->
           <XtxNumber v-model:count="count" :max="info.inventory" showLabel />
           <!-- 按钮 -->
-          <XtxButton class="xtx_btn" type="primary">加入购物车</XtxButton>
+          <XtxButton class="xtx_btn" type="primary" @click="addCart"
+            >加入购物车</XtxButton
+          >
         </div>
       </div>
       <!-- 商品详情 -->

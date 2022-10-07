@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-30 21:31:57
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-02 17:34:39
+ * @LastEditTime: 2022-10-07 10:14:55
  * @FilePath: \rabbit-ts-vue3\src\views\goods\components\goods-sku.vue
  * @Description:goods-sku
 -->
@@ -41,6 +41,8 @@ const changeSelected = (spec: Spec, specValue: SpecValue) => {
     // 拿着 selStr 在 pathMap 里面找对应的 id
     const skuId = pathMap[selStr][0]
     emits('selChange', skuId)
+  } else {
+    emits('selChange', '')
   }
 }
 
