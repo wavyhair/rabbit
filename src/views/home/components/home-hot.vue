@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-14 20:56:32
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-18 15:37:44
+ * @LastEditTime: 2022-10-07 09:55:44
  * @FilePath: \rabbit-ts-vue3\src\views\home\components\home-hot.vue
  * @Description:home-hot
 -->
@@ -20,7 +20,7 @@ const target = useLazyData(home.getHotList)
       <Transition name="fade">
         <ul v-if="home.hotGoodList.length > 0" ref="pannel" class="goods-list">
           <li v-for="item in home.hotGoodList" :key="item.id">
-            <RouterLink :to="`/category/${item.id}`">
+            <RouterLink to="/">
               <img v-lazy="item.picture" alt="" />
               <p class="name">{{ item.title }}</p>
               <p class="desc">{{ item.alt }}</p>

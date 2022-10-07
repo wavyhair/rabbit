@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-26 19:54:21
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-02 21:14:56
+ * @LastEditTime: 2022-10-07 09:58:43
  * @FilePath: \rabbit-ts-vue3\src\views\category\components\goods-item.vue
  * @Description:goods-item
 -->
@@ -21,7 +21,7 @@ defineProps({
 })
 </script>
 <template>
-  <RouterLink to="/" class="goods-item">
+  <RouterLink :to="`/product/${goods.id}`" class="goods-item">
     <img v-lazy="goods.picture" alt="" />
     <p class="name ellipsis">{{ goods.name }}</p>
     <p class="desc ellipsis">{{ goods.desc }}</p>
