@@ -2,18 +2,21 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 22:00:33
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-05 23:46:50
+ * @LastEditTime: 2022-10-07 12:59:03
  * @FilePath: \rabbit-ts-vue3\src\views\layout\components\app-topnav.vue
  * @Description: app-topnav.vue
 -->
 <script lang="ts" setup name="AppTopnav">
+import Confirm from '@/components/XtxConfirm/index'
 import useStore from '@/store'
 import { useRouter } from 'vue-router'
 const { user } = useStore()
 const router = useRouter()
 const logout = () => {
-  user.logout()
-  router.push('/login')
+  Confirm({ text: '确定要退出吗？' }).then(() => {
+    user.logout()
+    router.push('/login')
+  })
 }
 </script>
 

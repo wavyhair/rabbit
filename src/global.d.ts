@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-11 19:48:50
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-03 14:51:49
+ * @LastEditTime: 2022-10-07 12:48:45
  * @FilePath: \rabbit-ts-vue3\src\global.d.ts
  * @Description:全局组件类型文件
  */
@@ -22,6 +22,7 @@ import XtxNumber from '@/components/XtxNumbox/index.vue'
 import XtxButton from '@/components/XtxButton/index.vue'
 import XtxCheckBox from '@/components/XtxCheckBox/index.vue'
 import XtxMessage from '@/components/XtxMessage/index.vue'
+import XtxConfirm from '@/components/XtxConfirm/confirm.vue'
 declare module 'vue' {
   export interface GlobalComponents {
     XtxSkeleton: typeof XtxSkeleton
@@ -34,6 +35,7 @@ declare module 'vue' {
     XtxButton: typeof XtxButton
     XtxCheckBox: typeof XtxCheckBox
     XtxMessage: typeof XtxMessage
+    XtxConfirm: typeof XtxConfirm
   }
 }
 export {}
