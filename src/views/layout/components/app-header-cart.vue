@@ -7,9 +7,9 @@ cart.getCartList()
 </script>
 <template>
   <div class="cart">
-    <a class="curr" href="javascript:;">
+    <RouterLink to="/cart" class="curr">
       <i class="iconfont icon-cart"></i><em>{{ cart.effectiveListCounts }}</em>
-    </a>
+    </RouterLink>
     <div
       class="layer"
       v-if="cart.effectiveList.length && route.fullPath !== '/cart'"
@@ -40,7 +40,9 @@ cart.getCartList()
           <p>共 {{ cart.effectiveListCounts }} 件商品</p>
           <p>&yen;{{ cart.effectiveListPrice }}</p>
         </div>
-        <XtxButton type="plain">去购物车结算</XtxButton>
+        <XtxButton type="plain" @click="$router.push('/cart')"
+          >去购物车结算</XtxButton
+        >
       </div>
     </div>
   </div>
