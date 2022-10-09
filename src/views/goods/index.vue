@@ -2,8 +2,8 @@
  * @Author: CHENJIE
  * @Date: 2022-09-28 19:55:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-07 10:33:10
- * @FilePath: \rabbit-ts-vue3\src\views\goods\index.vue
+ * @LastEditTime: 2022-10-09 17:13:56
+ * @FilePath: /src/views/goods/index.vue
  * @Description:goods
 -->
 <script lang="ts" name="Goods" setup>
@@ -19,6 +19,7 @@ import { storeToRefs } from 'pinia'
 import { ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import Message from '@/components/XtxMessage'
+import { CartItem } from '@/types/cart'
 
 const { goods, cart } = useStore()
 const route = useRoute()
@@ -45,7 +46,28 @@ const selChange = (skuId: string) => {
 const count = ref(1)
 const addCart = () => {
   if (!currentSkuId.value) return Message.warning('请选择完整规格')
-  cart.addCart({ count: count.value, skuId: currentSkuId.value })
+  const sku = info.value.skus.find((item) => item.id === currentSkuId.value)
+  let attrsText
+  if (sku) {
+    attrsText = sku.specs
+      .map((item) => item.name + ':' + item.valueName)
+      .join(' ')
+  }
+
+  cart.addCart({
+    // 本地添加
+    id: info.value.id,
+    name: info.value.name,
+    picture: info.value.mainPictures[0],
+    price: info.value.price,
+    count: count.value,
+    skuId: currentSkuId.value,
+    attrsText: attrsText,
+    selected: true,
+    nowPrice: info.value.price,
+    stock: info.value.inventory,
+    isEffective: true,
+  } as CartItem)
   Message.success('加入购物车成功')
 }
 </script>
