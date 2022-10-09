@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-12 09:29:09
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-05 13:27:40
+ * @LastEditTime: 2022-10-09 18:42:00
  * @FilePath: \rabbit-ts-vue3\src\store\modules\home.ts
  * @Description:
  */
@@ -39,9 +39,7 @@ export default defineStore('home', {
     homeProduct: [] as HomeProduct[],
     specialList: [] as Special[],
   }),
-  persist: {
-    enabled: true,
-  },
+
   actions: {
     // 获取广告轮播图
     async getSlides() {

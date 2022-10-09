@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-10-05 10:41:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-06 12:23:11
+ * @LastEditTime: 2022-10-09 19:39:47
  * @FilePath: \rabbit-ts-vue3\src\store\modules\user.ts
  * @Description:user
  */
@@ -10,6 +10,7 @@ import { setProfile, getProfile, removeProfile } from '@/utils/storage'
 import { Profile, ProfileRes } from '@/types/user'
 import request from '@/utils/request'
 import { defineStore } from 'pinia'
+import useStore from '..'
 
 enum API {
   login = '/login',
@@ -69,6 +70,8 @@ export default defineStore('user', {
         unionId: openId,
         source: 6,
       })
+      const { cart } = useStore()
+      cart.mergeLocalCart()
       // 1. 保存用户信息到 state 中
       this.profile = res.data.result
       setProfile(res.data.result)
@@ -87,6 +90,8 @@ export default defineStore('user', {
         code,
         unionId: openId,
       })
+      const { cart } = useStore()
+      cart.mergeLocalCart()
       // 1. 保存用户信息到 state 中
       this.profile = res.data.result
       setProfile(res.data.result)
@@ -104,6 +109,8 @@ export default defineStore('user', {
         `${API.qqBindLogin}${data.openId}/complement`,
         data
       )
+      const { cart } = useStore()
+      cart.mergeLocalCart()
       // 1. 保存用户信息到 state 中
       this.profile = res.data.result
       setProfile(res.data.result)

@@ -2,10 +2,12 @@
  * @Author: CHENJIE
  * @Date: 2022-10-07 10:01:13
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-09 17:31:23
- * @FilePath: /src/store/modules/cart.ts
+ * @LastEditTime: 2022-10-09 19:36:02
+ * @FilePath: \rabbit-ts-vue3\src\store\modules\cart.ts
  * @Description:cart
  */
+import { ApiResponse } from '@/types/data'
+
 import { CartItem, CartItemRes } from '@/types/cart'
 import request from '@/utils/request'
 import { defineStore } from 'pinia'
@@ -17,6 +19,8 @@ enum API {
   deleteCart = '/member/cart',
   updateCart = '/member/cart/',
   updateCartAllSelected = '/member/cart/selected',
+  updateCartItem = '/goods/stock/',
+  mergeLocalCart = '/member/cart/merge',
 }
 export default defineStore('cart', {
   // 状态
@@ -53,6 +57,21 @@ export default defineStore('cart', {
       if (this.isLogin) {
         const res = await request.get<CartItemRes>(API.getCartList)
         this.list = res.data.result
+      } else {
+        // 没登陆i的情况夏获取购物车列表数据需要检查更新商品 sku 的库存、价格、是否有效
+        this.list.forEach(async (cartItem) => {
+          const { skuId } = cartItem
+          const res = await request.get<ApiResponse<CartItem>>(
+            API.updateCartItem + skuId
+          )
+          const lastCartInfo = res.data.result
+          // 更新现价
+          cartItem.nowPrice = lastCartInfo.nowPrice
+          // 更新库存
+          cartItem.stock = lastCartInfo.stock
+          // 更新是否有效
+          cartItem.isEffective = lastCartInfo.isEffective
+        })
       }
     },
     /**
@@ -94,7 +113,10 @@ export default defineStore('cart', {
         }
       }
     },
-    // 修改全选或者全不选
+    /**
+     * 修改全选或者全不选
+     * @param isSelected
+     */
     async updateCartAllSelected(isSelected: boolean) {
       if (this.isLogin) {
         await request.put(API.updateCartAllSelected, {
@@ -105,6 +127,19 @@ export default defineStore('cart', {
       } else {
         this.effectiveList.forEach((item) => (item.selected = isSelected))
       }
+    },
+    /**
+     *  合并购物车
+     */
+    async mergeLocalCart() {
+      const data = this.list.map(({ skuId, selected, count }) => ({
+        skuId,
+        selected,
+        count,
+      }))
+      await request.post(API.mergeLocalCart, data)
+      // 合并成功，重新获取购物车列表
+      this.getCartList()
     },
   },
   // 计算

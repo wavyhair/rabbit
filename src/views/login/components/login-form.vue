@@ -52,6 +52,9 @@ const login = async () => {
     if (res.errors.mobile || res.errors.code || res.errors.isAgree) return
     await user.mobileLogin(mobile.value, code.value)
   }
+  const { cart } = useStore()
+  // 合并购物车
+  cart.mergeLocalCart()
   router.push('/')
   Message.success('登录成功')
 }
