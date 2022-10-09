@@ -2,8 +2,8 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 18:46:37
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-06 18:43:15
- * @FilePath: \rabbit-ts-vue3\vite.config.ts
+ * @LastEditTime: 2022-10-09 15:53:50
+ * @FilePath: /vite.config.ts
  * @Description: vite.config
  */
 import { defineConfig } from 'vite'
