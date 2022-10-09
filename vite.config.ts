@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 18:46:37
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-09 15:53:50
+ * @LastEditTime: 2022-10-09 15:58:35
  * @FilePath: /vite.config.ts
  * @Description: vite.config
  */
@@ -23,7 +23,7 @@ export default defineConfig({
   server: {
     // QQ三方登录的回调uri为：http://www.corho.com:8080/#/login/callback
     // vite 中配置： www.corho.com:8080
-    host: 'www.corho.com',
+    // host: 'www.corho.com',
     port: 8080,
     open: true,
     cors: true,

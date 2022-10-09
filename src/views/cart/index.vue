@@ -1,6 +1,25 @@
 <script setup lang="ts" name="Cart">
+import Confirm from '@/components/XtxConfirm'
+import Message from '@/components/XtxMessage'
 import useStore from '@/store'
 const { cart } = useStore()
+const delCart = (skuIds: string[]) => {
+  Confirm({
+    text: '确定要删除吗？',
+  }).then(() => {
+    cart.deleteCart(skuIds)
+    Message.success('删除成功')
+  })
+}
+// 修改选中状态
+const changeSelected = (skuId: string, checked: boolean) => {
+  cart.updateCart(skuId, { selected: checked })
+}
+const changeCount = (skuId: string, count: number) => {
+  cart.updateCart(skuId, {
+    count,
+  })
+}
 </script>
 
 <template>
@@ -11,14 +30,31 @@ const { cart } = useStore()
         <XtxBreadItem>购物车</XtxBreadItem>
       </XtxBread>
       <div class="cart">
-        <template v-if="!cart.effectiveList.length">
-          <img src="../../assets/images/none.png" alt="" />
-        </template>
+        <!-- 删除光购物车之后使用元素占位 -->
+        <tr v-if="cart.effectiveList.length === 0">
+          <td colspan="6">
+            <div class="cart-none" style="text-align: center">
+              <img src="@/assets/images/none.png" alt="" />
+              <p>购物车内暂时没有商品</p>
+              <div class="btn" style="margin: 20px">
+                <XtxButton type="primary" @click="$router.push('/')">
+                  继续逛逛
+                </XtxButton>
+              </div>
+            </div>
+          </td>
+        </tr>
 
         <table v-else>
           <thead>
             <tr>
-              <th width="120"><XtxCheckbox>全选</XtxCheckbox></th>
+              <th width="120">
+                <XtxCheckBox
+                  :model-value="cart.isAllSelected"
+                  @update:modelValue="cart.updateCartAllSelected($event)"
+                  >全选</XtxCheckBox
+                >
+              </th>
               <th width="400">商品信息</th>
               <th width="220">单价</th>
               <th width="180">数量</th>
@@ -30,7 +66,12 @@ const { cart } = useStore()
           <!-- 有效商品 -->
           <tbody>
             <tr v-for="item in cart.effectiveList" :key="item.skuId">
-              <td><XtxCheckbox :model-value="item.selected" /></td>
+              <td>
+                <XtxCheckBox
+                  :model-value="item.selected"
+                  @update:modelValue="changeSelected(item.skuId, $event)"
+                />
+              </td>
               <td>
                 <div class="goods">
                   <RouterLink :to="`/goods/${item.id}`">
@@ -48,7 +89,11 @@ const { cart } = useStore()
                 <p>&yen;{{ item.nowPrice }}</p>
               </td>
               <td class="tc">
-                <XtxNumbox :model-value="item.count" :max="item.stock" />
+                <XtxNumber
+                  v-model:count="item.count"
+                  :max="item.stock"
+                  @update:count="changeCount(item.skuId, $event)"
+                />
               </td>
               <td class="tc">
                 <p class="f16 red">
@@ -57,7 +102,14 @@ const { cart } = useStore()
               </td>
               <td class="tc">
                 <p><a href="javascript:;">移入收藏夹</a></p>
-                <p><a class="green" href="javascript:;">删除</a></p>
+                <p>
+                  <a
+                    class="green"
+                    href="javascript:;"
+                    @click="delCart([item.skuId])"
+                    >删除</a
+                  >
+                </p>
                 <p><a href="javascript:;">找相似</a></p>
               </td>
             </tr>
@@ -65,18 +117,19 @@ const { cart } = useStore()
         </table>
       </div>
       <!-- 操作栏 -->
+      <!-- 操作栏 -->
       <div class="action">
         <div class="batch"></div>
         <div class="total">
-          共 7 件有效商品，已选择 2 件，商品合计：
-          <span class="red">¥400</span>
+          共 {{ cart.effectiveListCounts }} 件有效商品，已选择
+          {{ cart.selectedListCounts }} 件，商品合计：
+          <span class="red">¥{{ cart.selectedListPrice }}</span>
           <XtxButton type="primary">下单结算</XtxButton>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <style scoped lang="less">
 .tc {
   text-align: center;
@@ -144,9 +197,6 @@ const { cart } = useStore()
   .cart {
     background: #fff;
     color: #666;
-    img {
-      margin: 100px 520px;
-    }
     table {
       border-spacing: 0;
       border-collapse: collapse;
