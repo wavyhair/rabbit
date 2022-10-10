@@ -2,6 +2,8 @@
 import Confirm from '@/components/XtxConfirm'
 import Message from '@/components/XtxMessage'
 import useStore from '@/store'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const { cart } = useStore()
 const delCart = (skuIds: string[]) => {
   Confirm({
@@ -20,6 +22,15 @@ const changeCount = (skuId: string, count: number) => {
     count,
   })
 }
+/**
+ * 去结算
+ */
+const goCheckOut = () => {
+  if (cart.effectiveList.length === 0) {
+    return Message.warning('至少选择一件商品')
+  }
+  router.push('/member/checkout')
+}
 </script>
 
 <template>
@@ -30,22 +41,7 @@ const changeCount = (skuId: string, count: number) => {
         <XtxBreadItem>购物车</XtxBreadItem>
       </XtxBread>
       <div class="cart">
-        <!-- 删除光购物车之后使用元素占位 -->
-        <tr v-if="cart.effectiveList.length === 0">
-          <td colspan="6">
-            <div class="cart-none" style="text-align: center">
-              <img src="@/assets/images/none.png" alt="" />
-              <p>购物车内暂时没有商品</p>
-              <div class="btn" style="margin: 20px">
-                <XtxButton type="primary" @click="$router.push('/')">
-                  继续逛逛
-                </XtxButton>
-              </div>
-            </div>
-          </td>
-        </tr>
-
-        <table v-else>
+        <table>
           <thead>
             <tr>
               <th width="120">
@@ -65,7 +61,21 @@ const changeCount = (skuId: string, count: number) => {
 
           <!-- 有效商品 -->
           <tbody>
-            <tr v-for="item in cart.effectiveList" :key="item.skuId">
+            <!-- 删除光购物车之后使用元素占位 -->
+            <tr v-if="cart.effectiveList.length === 0">
+              <td colspan="6">
+                <div class="cart-none" style="text-align: center">
+                  <img src="@/assets/images/none.png" alt="" />
+                  <p>购物车内暂时没有商品</p>
+                  <div class="btn" style="margin: 20px">
+                    <XtxButton type="primary" @click="$router.push('/')">
+                      继续逛逛
+                    </XtxButton>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr v-else v-for="item in cart.effectiveList" :key="item.skuId">
               <td>
                 <XtxCheckBox
                   :model-value="item.selected"
@@ -124,7 +134,7 @@ const changeCount = (skuId: string, count: number) => {
           共 {{ cart.effectiveListCounts }} 件有效商品，已选择
           {{ cart.selectedListCounts }} 件，商品合计：
           <span class="red">¥{{ cart.selectedListPrice }}</span>
-          <XtxButton type="primary">下单结算</XtxButton>
+          <XtxButton type="primary" @click="goCheckOut">下单结算</XtxButton>
         </div>
       </div>
     </div>
