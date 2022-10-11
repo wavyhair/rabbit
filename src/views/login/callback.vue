@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-10-06 10:13:08
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-11 16:54:08
+ * @LastEditTime: 2022-10-11 17:29:58
  * @FilePath: /src/views/login/callback.vue
  * @Description:callback
 -->
@@ -12,11 +12,12 @@ import LoginHeader from './components/login-header.vue'
 import LoginFooter from './components/login-footer.vue'
 import CallbackBind from './components/callback-bind.vue'
 import CallbackPatch from './components/callback-patch.vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { ref } from 'vue'
 import Message from '@/components/XtxMessage'
 const { user } = useStore()
 const router = useRouter()
+const route = useRoute()
 const hasAccount = ref(true)
 /**
  * 是否第三方登录成功
@@ -28,7 +29,8 @@ if (isLogin) {
   QC.Login.getMe(async (openId) => {
     await user.qqLogin(openId)
     Message.success('登录成功')
-    router.push('/')
+    const redirectUrl = (route.query.redirectUrl as string) || '/'
+    router.push(redirectUrl)
   })
 }
 </script>

@@ -6,8 +6,9 @@ import useStore from '@/store'
 import { useField, useForm } from 'vee-validate'
 import Message from '@/components/XtxMessage'
 import { ref, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
+const route = useRoute()
 const { user } = useStore()
 const { time, start } = useCountDown()
 const type = ref<'account' | 'mobile'>('account')
@@ -55,7 +56,8 @@ const login = async () => {
   const { cart } = useStore()
   // 合并购物车
   cart.mergeLocalCart()
-  router.push('/')
+  const redirectUrl = (route.query.redirectUrl as string) || '/'
+  router.push(redirectUrl)
   Message.success('登录成功')
 }
 

@@ -2,8 +2,8 @@
  * @Author: CHENJIE
  * @Date: 2022-10-06 10:20:26
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-06 12:27:18
- * @FilePath: \rabbit-ts-vue3\src\views\login\components\callback-bind.vue
+ * @LastEditTime: 2022-10-11 17:27:02
+ * @FilePath: /src/views/login/components/callback-bind.vue
  * @Description:
 -->
 <script name="CallbackBind" lang="ts" setup>
@@ -13,10 +13,11 @@ import { QQUserInfo, QQUserInfoRes } from '@/types/user'
 import { useForm, useField } from 'vee-validate'
 import useStore from '@/store'
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useCountDown } from '@/hooks'
 import Message from '@/components/XtxMessage'
 const router = useRouter()
+const route = useRoute()
 const { user } = useStore()
 const qqInfo = ref<QQUserInfo>({} as QQUserInfo)
 // eslint-disable-next-line no-undef
@@ -63,8 +64,8 @@ const bind = async () => {
   const res = await validate()
   if (!res.valid) return
   // 如果校验，发送请求进行绑定
+  Message.success('登录成功')
   await user.qqBindLogin(resId.value, mobile.value, code.value)
-  Message.success('QQ绑定成功')
   router.push('/')
 }
 </script>

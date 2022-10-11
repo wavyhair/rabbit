@@ -2,13 +2,14 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 20:15:17
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-08 23:29:08
- * @FilePath: \rabbit-ts-vue3\src\router\index.ts
+ * @LastEditTime: 2022-10-11 17:28:49
+ * @FilePath: /src/router/index.ts
  * @Description:router
  */
 import Layout from '@/views/layout/index.vue'
 import Home from '@/views/home/index.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
+import useStore from '@/store'
 const router = createRouter({
   history: createWebHashHistory(),
   scrollBehavior: () => {
@@ -52,9 +53,31 @@ const router = createRouter({
       component: () => import('@/views/cart/index.vue'),
     },
     {
+      path: '/member/checkout',
+      component: () => import('@/views/member/pay/checkout.vue'),
+    },
+    {
       path: '/registration',
       component: () => import('@/views/registration/index.vue'),
     },
   ],
+})
+router.beforeEach((to, from, next) => {
+  const { cart } = useStore()
+  const isLogin = cart.isLogin
+  if (isLogin) {
+    next()
+  } else {
+    if (to.path.includes('/member')) {
+      next({
+        path: '/login',
+        query: {
+          redirectUrl: to.fullPath,
+        },
+      })
+    } else {
+      next()
+    }
+  }
 })
 export default router
