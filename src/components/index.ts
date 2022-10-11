@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-11 19:38:24
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-11 19:49:17
+ * @LastEditTime: 2022-10-11 20:52:53
  * @FilePath: \rabbit-ts-vue3\src\components\index.ts
  * @Description:全局组件注册
  */
@@ -18,7 +18,7 @@ import XtxCheckBox from '@/components/XtxCheckBox/index.vue'
 import XtxMessage from '@/components/XtxMessage/index.vue'
 import XtxConfirm from './XtxConfirm/confirm.vue'
 import XtxDialog from './XtxDialog/index.vue'
-
+import XtxSwitch from './switch/index.vue'
 import { App } from 'vue'
 
 export default {
@@ -35,5 +35,6 @@ export default {
     app.component('XtxMessage', XtxMessage)
     app.component('XtxConfirm', XtxConfirm)
     app.component('XtxDialog', XtxDialog)
+    app.component('XtxSwitch', XtxSwitch)
   },
 }

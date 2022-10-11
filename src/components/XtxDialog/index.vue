@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-10-11 19:48:27
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-11 20:18:09
+ * @LastEditTime: 2022-10-11 20:59:02
  * @FilePath: \rabbit-ts-vue3\src\components\XtxDialog\index.vue
  * @Description:XtxDialog
 -->
@@ -55,7 +55,7 @@ onClickOutside(target, () => {
       </div>
       <div class="body"><slot /></div>
       <div class="footer">
-        <slot name="fotter" />
+        <slot name="footer" />
       </div>
     </div>
   </div>
