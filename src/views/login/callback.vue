@@ -2,18 +2,35 @@
  * @Author: CHENJIE
  * @Date: 2022-10-06 10:13:08
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-06 10:21:18
- * @FilePath: \rabbit-ts-vue3\src\views\login\callback.vue
+ * @LastEditTime: 2022-10-11 16:54:08
+ * @FilePath: /src/views/login/callback.vue
  * @Description:callback
 -->
 <script lang="ts" setup name="LoginCallback">
+import useStore from '@/store'
 import LoginHeader from './components/login-header.vue'
 import LoginFooter from './components/login-footer.vue'
 import CallbackBind from './components/callback-bind.vue'
 import CallbackPatch from './components/callback-patch.vue'
+import { useRouter } from 'vue-router'
 import { ref } from 'vue'
-
+import Message from '@/components/XtxMessage'
+const { user } = useStore()
+const router = useRouter()
 const hasAccount = ref(true)
+/**
+ * 是否第三方登录成功
+ */
+// eslint-disable-next-line no-undef
+const isLogin = QC.Login.check()
+if (isLogin) {
+  // eslint-disable-next-line no-undef
+  QC.Login.getMe(async (openId) => {
+    await user.qqLogin(openId)
+    Message.success('登录成功')
+    router.push('/')
+  })
+}
 </script>
 
 <template>
