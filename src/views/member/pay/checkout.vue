@@ -1,4 +1,6 @@
-<script lang="ts" setup name="XtxPayCheckoutPage"></script>
+<script lang="ts" setup name="XtxPayCheckoutPage">
+const submitCheckout = () => {}
+</script>
 
 <template>
   <div class="xtx-pay-checkout-page">
@@ -104,7 +106,7 @@
         </div>
         <!-- 提交订单 -->
         <div class="submit">
-          <XtxButton type="primary">提交订单</XtxButton>
+          <XtxButton type="primary" @click="submitCheckout">提交订单</XtxButton>
         </div>
       </div>
     </div>
