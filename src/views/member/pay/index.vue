@@ -1,4 +1,37 @@
-<script name="XtxPayPage" setup lang="ts"></script>
+<script name="XtxPayPage" setup lang="ts">
+import dayjs from 'dayjs'
+import { useCountDown } from '@/hooks'
+import type { OrderPayInfoRes, OrderPayInfo } from '@/types/checkout'
+import request from '@/utils/request'
+import { onMounted, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import Message from '@/components/XtxMessage'
+const router = useRouter()
+const route = useRoute()
+enum API_URL {
+  getOrder = '/member/order/',
+}
+const order = ref<OrderPayInfo>({} as OrderPayInfo)
+const showTime = ref(0)
+const timeFormat = (second: number) => {
+  return dayjs.unix(second).format('mm分ss秒')
+}
+onMounted(async () => {
+  const res = await request.get<OrderPayInfoRes>(
+    API_URL.getOrder + route.query.id
+  )
+  order.value = res.data.result
+  const { time, start } = useCountDown(order.value.countdown)
+  start()
+  watch(time, (value) => {
+    showTime.value = value
+    if (value < 0) {
+      router.replace('/cart')
+      Message.warning('订单因超时关闭，请您重新下单')
+    }
+  })
+})
+</script>
 <template>
   <div class="xtx-pay-page">
     <div class="container">
@@ -12,11 +45,14 @@
         <span class="icon iconfont icon-queren2"></span>
         <div class="tip">
           <p>订单提交成功！请尽快完成支付。</p>
-          <p>支付还剩 <span>24分59秒</span>, 超时后将取消订单</p>
+          <p>
+            支付还剩 <span>{{ timeFormat(showTime) }}</span
+            >, 超时后将取消订单
+          </p>
         </div>
         <div class="amount">
           <span>应付总额：</span>
-          <span>¥5673.00</span>
+          <span>¥{{ order?.totalMoney }}</span>
         </div>
       </div>
       <!-- 付款方式 -->
