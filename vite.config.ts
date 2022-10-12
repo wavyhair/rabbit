@@ -6,6 +6,9 @@
  * @FilePath: /vite.config.ts
  * @Description: vite.config
  */
+import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
@@ -18,6 +21,22 @@ export default defineConfig({
       reactivityTransform: true,
     }),
     vueSetupExtend(),
+    Components({
+      dirs: ['src/components', 'src/views'],
+      extensions: ['vue'],
+      deep: true,
+      dts: 'src/components.d.ts',
+      types: [
+        {
+          from: 'vue-router',
+          names: ['RouterLink', 'RouterView'],
+        },
+      ],
+    }),
+    AutoImport({
+      imports: ['vue'],
+      dts: true,
+    }),
   ],
   base: '/rabbit-ts-vue3.2/',
   server: {
