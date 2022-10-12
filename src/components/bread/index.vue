@@ -2,14 +2,13 @@
  * @Author: CHENJIE
  * @Date: 2022-09-25 21:22:16
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-25 21:46:57
+ * @LastEditTime: 2022-10-12 18:31:48
  * @FilePath: \rabbit-ts-vue3\src\components\bread\index.vue
  * @Description:bread
 -->
 <script lang="ts" setup name="XtxBread">
 // 分隔符数据是位于Bread组件中 而对于分隔符数据的使用是在底层的组件中使用
 // provide/inject
-import { provide } from 'vue'
 
 const props = defineProps({
   separator: {

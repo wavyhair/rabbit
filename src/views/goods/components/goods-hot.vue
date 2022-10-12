@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-10-02 21:11:28
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-02 22:14:54
+ * @LastEditTime: 2022-10-12 18:33:16
  * @FilePath: \rabbit-ts-vue3\src\views\goods\components\goods-hot.vue
  * @Description:热榜
 -->
@@ -10,8 +10,8 @@
 import request from '@/utils/request'
 import { GoodItem, GoodItemResponse } from '@/types/data'
 import GoodsItem from '@/views/category/components/goods-item.vue'
-import { onMounted, PropType, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { PropType } from 'vue'
+
 const props = defineProps({
   type: {
     type: Number as PropType<1 | 2 | 3>,

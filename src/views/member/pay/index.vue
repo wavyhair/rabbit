@@ -3,8 +3,7 @@ import dayjs from 'dayjs'
 import { useCountDown } from '@/hooks'
 import type { OrderPayInfoRes, OrderPayInfo } from '@/types/checkout'
 import request from '@/utils/request'
-import { onMounted, ref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+
 import Message from '@/components/XtxMessage'
 const router = useRouter()
 const route = useRoute()

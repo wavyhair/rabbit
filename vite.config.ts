@@ -2,8 +2,8 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 18:46:37
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-11 16:56:06
- * @FilePath: /vite.config.ts
+ * @LastEditTime: 2022-10-12 18:23:25
+ * @FilePath: \rabbit-ts-vue3\vite.config.ts
  * @Description: vite.config
  */
 import Components from 'unplugin-vue-components/vite'
@@ -34,7 +34,7 @@ export default defineConfig({
       ],
     }),
     AutoImport({
-      imports: ['vue'],
+      imports: ['vue', 'vue-router'],
       dts: true,
     }),
   ],

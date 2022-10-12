@@ -2,8 +2,8 @@
  * @Author: CHENJIE
  * @Date: 2022-10-06 10:20:26
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-11 17:27:02
- * @FilePath: /src/views/login/components/callback-bind.vue
+ * @LastEditTime: 2022-10-12 18:33:36
+ * @FilePath: \rabbit-ts-vue3\src\views\login\components\callback-bind.vue
  * @Description:
 -->
 <script name="CallbackBind" lang="ts" setup>
@@ -12,8 +12,6 @@ import { validateRules } from '@/utils/validateRules'
 import { QQUserInfo, QQUserInfoRes } from '@/types/user'
 import { useForm, useField } from 'vee-validate'
 import useStore from '@/store'
-import { ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
 import { useCountDown } from '@/hooks'
 import Message from '@/components/XtxMessage'
 const router = useRouter()

@@ -7,7 +7,6 @@
  * @Description:自定义 hooks
  */
 import { useIntervalFn } from '@vueuse/core'
-import { ref } from 'vue'
 
 /**
  * 封装一个倒计时功能

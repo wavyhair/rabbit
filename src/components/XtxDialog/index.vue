@@ -2,13 +2,12 @@
  * @Author: CHENJIE
  * @Date: 2022-10-11 19:48:27
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-11 20:59:02
+ * @LastEditTime: 2022-10-12 18:32:35
  * @FilePath: \rabbit-ts-vue3\src\components\XtxDialog\index.vue
  * @Description:XtxDialog
 -->
 <script lang="ts" setup name="XtxDialog">
 import { onClickOutside } from '@vueuse/core'
-import { ref, watch } from 'vue'
 const props = defineProps({
   title: {
     type: String,

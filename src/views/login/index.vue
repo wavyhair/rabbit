@@ -9,7 +9,6 @@
 <script setup lang="ts" name="Login">
 import LoginHeader from './components/login-header.vue'
 import LoginFooter from './components/login-footer.vue'
-import { ref } from 'vue'
 import LoginForm from './components/login-form.vue'
 const activeName = ref<'account' | 'qrcode'>('account')
 </script>

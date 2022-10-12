@@ -2,14 +2,13 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 22:00:33
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-09 16:49:42
- * @FilePath: /src/views/layout/components/app-topnav.vue
+ * @LastEditTime: 2022-10-12 18:33:25
+ * @FilePath: \rabbit-ts-vue3\src\views\layout\components\app-topnav.vue
  * @Description: app-topnav.vue
 -->
 <script lang="ts" setup name="AppTopnav">
 import Confirm from '@/components/XtxConfirm/index'
 import useStore from '@/store'
-import { useRouter } from 'vue-router'
 const { user, cart } = useStore()
 const router = useRouter()
 const logout = () => {

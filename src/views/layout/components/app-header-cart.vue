@@ -1,6 +1,5 @@
 <script setup lang="ts" name="AppHeaderCart">
 import useStore from '@/store'
-import { useRoute } from 'vue-router'
 const route = useRoute()
 const { cart } = useStore()
 cart.getCartList()

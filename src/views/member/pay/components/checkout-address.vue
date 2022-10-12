@@ -1,7 +1,6 @@
 <script lang="ts" setup name="CheckoutAddress">
 import useStore from '@/store'
 import { UserAddress } from '@/types/checkout'
-import { ref, watch } from 'vue'
 import { CityResult } from '@/components/city/index.vue'
 import Message from '@/components/XtxMessage'
 

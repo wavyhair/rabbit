@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-10-11 20:39:22
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-11 20:39:51
+ * @LastEditTime: 2022-10-12 18:31:57
  * @FilePath: \rabbit-ts-vue3\src\components\switch\index.vue
  * @Description:switch
 -->
@@ -17,7 +17,6 @@
 </template>
 
 <script lang="ts" setup name="XtxSwitch">
-import { ref, watch } from 'vue'
 const props = defineProps({
   modelValue: {
     type: [Boolean, Number, String],

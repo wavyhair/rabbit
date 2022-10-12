@@ -2,8 +2,8 @@
  * @Author: CHENJIE
  * @Date: 2022-10-06 10:13:08
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-11 17:29:58
- * @FilePath: /src/views/login/callback.vue
+ * @LastEditTime: 2022-10-12 18:27:33
+ * @FilePath: \rabbit-ts-vue3\src\views\login\callback.vue
  * @Description:callback
 -->
 <script lang="ts" setup name="LoginCallback">
@@ -12,8 +12,6 @@ import LoginHeader from './components/login-header.vue'
 import LoginFooter from './components/login-footer.vue'
 import CallbackBind from './components/callback-bind.vue'
 import CallbackPatch from './components/callback-patch.vue'
-import { useRoute, useRouter } from 'vue-router'
-import { ref } from 'vue'
 import Message from '@/components/XtxMessage'
 const { user } = useStore()
 const router = useRouter()

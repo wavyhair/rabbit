@@ -2,15 +2,14 @@
  * @Author: CHENJIE
  * @Date: 2022-09-07 20:01:23
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-02 20:05:57
+ * @LastEditTime: 2022-10-12 18:32:57
  * @FilePath: \rabbit-ts-vue3\src\views\category\sub.vue
  * @Description: category
 -->
 <script lang="ts" setup name="SubCategory">
 import GoodsItem from './components/goods-item.vue'
 import useStore from '@/store'
-import { watchEffect } from 'vue'
-import { useRoute } from 'vue-router'
+
 const { category } = useStore()
 const route = useRoute()
 watchEffect(() => {

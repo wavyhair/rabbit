@@ -2,7 +2,6 @@
 import Message from '@/components/XtxMessage'
 import useStore from '@/store'
 import request from '@/utils/request'
-import { useRouter } from 'vue-router'
 import CheckoutAddress from './components/checkout-address.vue'
 const router = useRouter()
 const { checkout, cart } = useStore()

@@ -2,13 +2,12 @@
  * @Author: CHENJIE
  * @Date: 2022-09-12 11:16:48
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-12 16:28:22
+ * @LastEditTime: 2022-10-12 18:31:52
  * @FilePath: \rabbit-ts-vue3\src\components\carouse\index.vue
  * @Description:carouse
 -->
 <script lang="ts" setup name="XtxCarousel">
 import { SlidesItem } from '@/types/data'
-import { onMounted, onUnmounted, ref } from 'vue'
 
 interface Props {
   slides: SlidesItem[]

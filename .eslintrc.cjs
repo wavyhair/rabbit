@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 19:40:26
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-06 20:26:02
+ * @LastEditTime: 2022-10-12 18:30:37
  * @FilePath: \rabbit-ts-vue3\.eslintrc.cjs
  * @Description: eslintrc
  */
@@ -21,6 +21,7 @@ module.exports = {
     'eslint:recommended',
     '@vue/eslint-config-typescript/recommended',
     '@vue/eslint-config-prettier',
+    './.eslintrc-auto-import.json',
   ],
   env: {
     'vue/setup-compiler-macros': true,

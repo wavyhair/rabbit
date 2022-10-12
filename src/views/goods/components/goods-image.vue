@@ -2,13 +2,12 @@
  * @Author: CHENJIE
  * @Date: 2022-09-28 20:20:17
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-28 21:51:28
+ * @LastEditTime: 2022-10-12 18:33:21
  * @FilePath: \rabbit-ts-vue3\src\views\goods\components\goods-image.vue
  * @Description:goods-image
 -->
 <script lang="ts" setup name="GoodsImage">
 import { useMouseInElement } from '@vueuse/core'
-import { computed, ref } from 'vue'
 
 interface Props {
   images: string[]
