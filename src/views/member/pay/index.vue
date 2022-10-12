@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import { useCountDown } from '@/hooks'
 import type { OrderPayInfoRes, OrderPayInfo } from '@/types/checkout'
 import request from '@/utils/request'
-
+import { baseURL } from '@/utils/request'
 import Message from '@/components/XtxMessage'
 const router = useRouter()
 const route = useRoute()
@@ -30,6 +30,10 @@ onMounted(async () => {
     }
   })
 })
+const redirectUrl = encodeURIComponent(
+  'http://www.corho.com:8080/#/pay/callback'
+)
+const payUrl = `${baseURL}pay/aliPay?orderId=${route.query.id}&redirect=${redirectUrl}`
 </script>
 <template>
   <div class="xtx-pay-page">
@@ -60,7 +64,7 @@ onMounted(async () => {
         <div class="item">
           <p>支付平台</p>
           <a class="btn wx" href="javascript:;"></a>
-          <a class="btn alipay" href="javascript:;"></a>
+          <a class="btn alipay" :href="payUrl"></a>
         </div>
         <div class="item">
           <p>支付方式</p>

@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 20:15:17
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-12 18:35:46
+ * @LastEditTime: 2022-10-12 19:31:34
  * @FilePath: \rabbit-ts-vue3\src\router\index.ts
  * @Description:router
  */
@@ -59,6 +59,10 @@ const router = createRouter({
     {
       path: '/member/pay',
       component: () => import('@/views/member/pay/index.vue'),
+    },
+    {
+      path: '/pay/callback',
+      component: () => import('@/views/member/pay/callback.vue'),
     },
     {
       path: '/registration',
