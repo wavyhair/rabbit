@@ -38,6 +38,7 @@ declare module '@vue/runtime-core' {
     HomeCategory: typeof import('./views/home/components/home-category.vue')['default']
     HomeHot: typeof import('./views/home/components/home-hot.vue')['default']
     HomeNew: typeof import('./views/home/components/home-new.vue')['default']
+    HomeOverview: typeof import('./views/member/home/components/home-overview.vue')['default']
     HomePanel: typeof import('./views/home/components/home-panel.vue')['default']
     HomeProduct: typeof import('./views/home/components/home-product.vue')['default']
     HomeSkeleton: typeof import('./views/home/components/home-skeleton.vue')['default']
