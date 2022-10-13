@@ -1,3 +1,11 @@
+<!--
+ * @Author: CHENJIE
+ * @Date: 2022-10-12 19:30:00
+ * @LastEditors: CHENJIE
+ * @LastEditTime: 2022-10-13 20:31:02
+ * @FilePath: \rabbit-ts-vue3\src\views\member\pay\callback.vue
+ * @Description:
+-->
 <script setup lang="ts">
 import type { Order, OrderResponse } from '@/types/pay'
 import request from '@/utils/request'

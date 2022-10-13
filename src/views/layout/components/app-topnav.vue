@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 22:00:33
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-12 18:33:25
+ * @LastEditTime: 2022-10-13 22:02:34
  * @FilePath: \rabbit-ts-vue3\src\views\layout\components\app-topnav.vue
  * @Description: app-topnav.vue
 -->
@@ -42,8 +42,8 @@ const logout = () => {
             >免费注册</a
           >
         </li>
-        <li><a href="javascript:;">我的订单</a></li>
-        <li><a href="javascript:;">会员中心</a></li>
+        <li><RouterLink to="/member/order">我的订单</RouterLink></li>
+        <li><RouterLink to="/member">会员中心</RouterLink></li>
         <li><a href="javascript:;">帮助中心</a></li>
         <li><a href="javascript:;">关于我们</a></li>
         <li>

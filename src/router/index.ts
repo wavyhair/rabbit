@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 20:15:17
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-12 19:31:34
+ * @LastEditTime: 2022-10-13 21:52:34
  * @FilePath: \rabbit-ts-vue3\src\router\index.ts
  * @Description:router
  */
@@ -51,6 +51,20 @@ const router = createRouter({
     {
       path: '/cart',
       component: () => import('@/views/cart/index.vue'),
+    },
+    {
+      path: '/member',
+      component: () => import('@/views/member/layout/index.vue'),
+      children: [
+        {
+          path: '',
+          component: () => import('@/views/member/home/index.vue'),
+        },
+        {
+          path: 'order',
+          component: () => import('@/views/member/order/index.vue'),
+        },
+      ],
     },
     {
       path: '/member/checkout',
