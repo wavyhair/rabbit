@@ -2,15 +2,15 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 18:50:37
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-07 11:58:23
+ * @LastEditTime: 2022-10-15 12:46:12
  * @FilePath: \rabbit-ts-vue3\src\utils\request.ts
  * @Description: request
  */
 import Message from '@/components/XtxMessage'
 import axios, { AxiosError } from 'axios'
 import useStore from '@/store'
-// 备用接口地址: http://pcapi-xiaotuxian-front-devtest.itheima.net/
-export const baseURL = 'http://pcapi-xiaotuxian-front-devtest.itheima.net/'
+// 备用接口地址: http://pcapi-xiaotuxian-front-devtest.itheima.net/    https://yanxuan-item.nosdn.127.net/
+export const baseURL = 'https://apipc-xiaotuxian-front.itheima.net/'
 
 const instance = axios.create({
   // baseURL: 'http://pcapi-xiaotuxian-front.itheima.net/'
@@ -43,7 +43,7 @@ instance.interceptors.response.use(
     if (!error.response) {
       Message.warning('网络异常，请稍后再试！')
     } else {
-      Message.error(error.response.data.message)
+      Message.error(error?.response?.data?.message || '卧槽~服务器炸了,呜呜呜~')
     }
     // 对响应错误做点什么
     return Promise.reject(error)

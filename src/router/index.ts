@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 20:15:17
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-13 21:52:34
+ * @LastEditTime: 2022-10-15 12:38:59
  * @FilePath: \rabbit-ts-vue3\src\router\index.ts
  * @Description:router
  */
@@ -39,6 +39,10 @@ const router = createRouter({
           component: () => import('@/views/goods/index.vue'),
         },
       ],
+    },
+    {
+      path: '/playground',
+      component: () => import('@/views/playground/index.vue'),
     },
     {
       path: '/login',

@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-11 19:48:50
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-11 20:53:41
+ * @LastEditTime: 2022-10-15 12:53:40
  * @FilePath: \rabbit-ts-vue3\src\global.d.ts
  * @Description:全局组件类型文件
  */
@@ -25,6 +25,8 @@ import XtxMessage from '@/components/XtxMessage/index.vue'
 import XtxConfirm from '@/components/XtxConfirm/confirm.vue'
 import XtxDialog from '@/components/XtxDialog/index.vue'
 import XtxSwitch from '@/components/switch/index.vue'
+import XtxTabs from '@/components/XtxTabs/index.vue'
+import XtxTabsPane from '@/components//XtxTabsPane/index.vue'
 declare module 'vue' {
   export interface GlobalComponents {
     XtxSkeleton: typeof XtxSkeleton
@@ -40,6 +42,8 @@ declare module 'vue' {
     XtxConfirm: typeof XtxConfirm
     XtxDialog: typeof XtxDialog
     XtxSwitch: typeof XtxSwitch
+    XtxTabs: typeof XtxTabs
+    XtxTabsPane: typeof XtxTabsPane
   }
 }
 export {}

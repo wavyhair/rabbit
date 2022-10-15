@@ -53,6 +53,7 @@ declare module '@vue/runtime-core' {
     More: typeof import('./components/more/index.vue')['default']
     Order: typeof import('./views/member/order/index.vue')['default']
     Pay: typeof import('./views/member/pay/index.vue')['default']
+    Playground: typeof import('./views/playground/index.vue')['default']
     Registration: typeof import('./views/registration/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -64,5 +65,7 @@ declare module '@vue/runtime-core' {
     XtxDialog: typeof import('./components/XtxDialog/index.vue')['default']
     XtxMessage: typeof import('./components/XtxMessage/index.vue')['default']
     XtxNumber: typeof import('./components/XtxNumber/index.vue')['default']
+    XtxTabs: typeof import('./components/XtxTabs/index.vue')['default']
+    XtxTabsPane: typeof import('./components/XtxTabsPane/index.vue')['default']
   }
 }
