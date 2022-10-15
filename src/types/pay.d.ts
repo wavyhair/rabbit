@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-10-12 19:40:47
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-12 19:43:34
+ * @LastEditTime: 2022-10-15 14:31:30
  * @FilePath: \rabbit-ts-vue3\src\types\pay.d.ts
  * @Description:pay.d.ts
  */
@@ -51,4 +51,14 @@ interface Order {
   totalMoney: number
   totalNum: number
 }
+// 订单列表总信息
+export interface OrderListInfo {
+  counts: number
+  pageSize: number
+  pages: number
+  page: number
+  // 应用订单列表别名
+  items: OrderPayInfo[]
+}
 export type OrderResponse = ApiResponse<Order>
+export type OrderListInfoRes = ApiResponse<OrderListInfo>

@@ -52,6 +52,7 @@ declare module '@vue/runtime-core' {
     MemberAside: typeof import('./views/member/layout/components/member-aside.vue')['default']
     More: typeof import('./components/more/index.vue')['default']
     Order: typeof import('./views/member/order/index.vue')['default']
+    OrderItem: typeof import('./views/member/order/components/order-item.vue')['default']
     Pay: typeof import('./views/member/pay/index.vue')['default']
     Playground: typeof import('./views/playground/index.vue')['default']
     Registration: typeof import('./views/registration/index.vue')['default']
