@@ -62,6 +62,7 @@ declare module '@vue/runtime-core' {
     Sub: typeof import('./views/category/sub.vue')['default']
     Switch: typeof import('./components/switch/index.vue')['default']
     XtxButton: typeof import('./components/XtxButton/index.vue')['default']
+    XtxCheckbox: typeof import('./components/XtxCheckbox/index.vue')['default']
     XtxCheckBox: typeof import('./components/XtxCheckBox/index.vue')['default']
     XtxDialog: typeof import('./components/XtxDialog/index.vue')['default']
     XtxMessage: typeof import('./components/XtxMessage/index.vue')['default']
