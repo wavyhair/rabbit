@@ -2,8 +2,8 @@
  * @Author: CHENJIE
  * @Date: 2022-09-28 19:55:14
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-09 17:13:56
- * @FilePath: /src/views/goods/index.vue
+ * @LastEditTime: 2022-10-12 18:33:03
+ * @FilePath: \rabbit-ts-vue3\src\views\goods\index.vue
  * @Description:goods
 -->
 <script lang="ts" name="Goods" setup>
@@ -16,8 +16,6 @@ import GoodsHot from './components/goods-hot.vue'
 
 import useStore from '@/store'
 import { storeToRefs } from 'pinia'
-import { ref, watchEffect } from 'vue'
-import { useRoute } from 'vue-router'
 import Message from '@/components/XtxMessage'
 import { CartItem } from '@/types/cart'
 

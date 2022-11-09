@@ -2,14 +2,13 @@
  * @Author: CHENJIE
  * @Date: 2022-09-29 19:54:59
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-30 11:47:31
- * @FilePath: /src/components/city/index.vue
+ * @LastEditTime: 2022-10-12 18:34:29
+ * @FilePath: \rabbit-ts-vue3\src\components\city\index.vue
  * @Description:city
 -->
 <script lang="ts" setup name="XtxCity">
 import { onClickOutside } from '@vueuse/core'
 import axios from 'axios'
-import { reactive, ref, watch } from 'vue'
 // 选择的城市结果类型
 export interface CityResult {
   provinceCode: string

@@ -2,10 +2,14 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 18:46:37
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-11 16:56:06
- * @FilePath: /vite.config.ts
+ * @LastEditTime: 2022-10-15 13:23:13
+ * @FilePath: \rabbit-ts-vue3\vite.config.ts
  * @Description: vite.config
  */
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
@@ -18,6 +22,23 @@ export default defineConfig({
       reactivityTransform: true,
     }),
     vueSetupExtend(),
+    vueJsx({}),
+    Components({
+      dirs: ['src/components', 'src/views'],
+      extensions: ['vue'],
+      deep: true,
+      dts: 'src/components.d.ts',
+      types: [
+        {
+          from: 'vue-router',
+          names: ['RouterLink', 'RouterView'],
+        },
+      ],
+    }),
+    AutoImport({
+      imports: ['vue', 'vue-router'],
+      dts: true,
+    }),
   ],
   base: '/rabbit-ts-vue3.2/',
   server: {

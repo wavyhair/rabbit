@@ -2,13 +2,11 @@
  * @Author: CHENJIE
  * @Date: 2022-09-25 21:23:59
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-25 21:43:04
+ * @LastEditTime: 2022-10-12 18:34:35
  * @FilePath: \rabbit-ts-vue3\src\components\bread\item.vue
  * @Description:breadItem
 -->
 <script lang="ts" setup name="XtxBreadItem">
-import { inject } from 'vue'
-
 defineProps({
   to: {
     type: String,

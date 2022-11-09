@@ -10,7 +10,6 @@
 import { useLazyData } from '@/utils/hooks'
 import HomePanel from './home-panel.vue'
 import useStore from '@/store'
-import { ref } from 'vue'
 const { home } = useStore()
 const target = useLazyData(home.getBrandList)
 const index = ref(0)

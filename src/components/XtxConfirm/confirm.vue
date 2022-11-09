@@ -8,7 +8,7 @@
 -->
 <script lang="ts" setup name="XtxConfirm">
 import XtxButton from '@/components/XtxButton/index.vue'
-import { onMounted, PropType, ref } from 'vue'
+import { PropType } from 'vue'
 
 const props = defineProps({
   text: {

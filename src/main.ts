@@ -2,8 +2,8 @@
  * @Author: CHENJIE
  * @Date: 2022-09-06 18:46:37
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-09 17:23:50
- * @FilePath: /src/main.ts
+ * @LastEditTime: 2022-10-15 15:19:21
+ * @FilePath: \rabbit-ts-vue3\src\main.ts
  * @Description:main
  */
 import { createApp } from 'vue'
@@ -13,7 +13,7 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import router from './router'
-import XtxUi from './components' // 全局组件
+import XtxUi from '@/components/index' // 全局组件  👺  使用 unplugin-vue-components 插件之后会在 src 下生成 components.d.ts文件 默认引入 .d.ts文件之后就会报错 所以这引入路径需要写完整 否则 app.use()时候会报类型错误
 import directives from './directives' // 自定义指令
 
 const app = createApp(App)

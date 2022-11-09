@@ -2,7 +2,7 @@
  * @Author: CHENJIE
  * @Date: 2022-09-07 20:00:34
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-26 22:28:37
+ * @LastEditTime: 2022-10-12 18:34:22
  * @FilePath: \rabbit-ts-vue3\src\views\category\index.vue
  * @Description: category
 -->
@@ -11,8 +11,6 @@
 import GoodsItem from './components/goods-item.vue'
 import useStore from '@/store'
 import { storeToRefs } from 'pinia'
-import { watchEffect } from 'vue'
-import { useRoute } from 'vue-router'
 const { category, home } = useStore()
 const { topCategory } = storeToRefs(category)
 home.getSlides()

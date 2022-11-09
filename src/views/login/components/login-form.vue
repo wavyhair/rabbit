@@ -5,8 +5,6 @@ import useStore from '@/store'
 
 import { useField, useForm } from 'vee-validate'
 import Message from '@/components/XtxMessage'
-import { ref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 const { user } = useStore()

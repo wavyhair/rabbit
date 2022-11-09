@@ -7,7 +7,6 @@
  * @Description:hooks
  */
 import { useIntersectionObserver } from '@vueuse/core'
-import { ref } from 'vue'
 
 // 数据懒加载 api
 export const useLazyData = (apiFn: () => void) => {

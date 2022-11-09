@@ -2,12 +2,12 @@
  * @Author: CHENJIE
  * @Date: 2022-10-03 14:49:56
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-10-03 17:21:17
+ * @LastEditTime: 2022-10-12 18:32:42
  * @FilePath: \rabbit-ts-vue3\src\components\XtxMessage\index.vue
  * @Description:
 -->
 <script lang="ts" setup name="XtxMessage">
-import { onMounted, PropType, ref } from 'vue'
+import { PropType } from 'vue'
 
 defineProps({
   type: {

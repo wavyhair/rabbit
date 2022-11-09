@@ -2,13 +2,12 @@
  * @Autor:jiea
  * @Date: 2022-09-10 21:34
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-09-17 19:40:32
+ * @LastEditTime: 2022-10-12 18:34:15
  * @FilePath: \rabbit-ts-vue3\src\views\home\components\home-category.vue
  * @Description: 左侧分类组件
 -->
 <script lang="ts" setup name="HomeCategory">
 import useStore from '@/store'
-import { computed, ref } from 'vue'
 const { category } = useStore()
 const categoryId = ref('')
 const goods = computed(() => {

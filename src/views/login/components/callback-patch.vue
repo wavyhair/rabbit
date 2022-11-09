@@ -9,7 +9,6 @@ import {
 import { useCountDown } from '@/hooks'
 
 import useStore from '@/store'
-import { useRouter } from 'vue-router'
 import { validateRules } from '@/utils/validateRules'
 import Message from '@/components/XtxMessage'
 const { user } = useStore()

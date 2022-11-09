@@ -2,7 +2,6 @@
 import Confirm from '@/components/XtxConfirm'
 import Message from '@/components/XtxMessage'
 import useStore from '@/store'
-import { useRouter } from 'vue-router'
 const router = useRouter()
 const { cart } = useStore()
 const delCart = (skuIds: string[]) => {
