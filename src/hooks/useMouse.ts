@@ -1,11 +1,11 @@
 import { ref } from 'vue'
-import { useEventListener } from './useEventListener'
+import useEventListener from './useEventListener'
 
 /*
  * @Author: CHENJIE
  * @Date: 2022-11-09 11:29:45
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-11-09 14:15:31
+ * @LastEditTime: 2022-11-09 14:27:28
  * @FilePath: \rabbit-ts-vue3.2\src\hooks\useMouse.ts
  * @Description:useMouse
  */
@@ -14,7 +14,7 @@ import { useEventListener } from './useEventListener'
  * @return {*} x：x坐标
  * @return {*} y：y坐标
  */
-export const useMouse = () => {
+const useMouse = () => {
   const x = ref(0)
   const y = ref(0)
   useEventListener(window, 'mousemove', (event: MouseEvent) => {
@@ -22,3 +22,4 @@ export const useMouse = () => {
   })
   return { x, y }
 }
+export default useMouse

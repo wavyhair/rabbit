@@ -3,13 +3,13 @@
 <<<<<<< HEAD
  * @Date: 2022-11-09 10:44:40
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-11-09 14:22:17
+ * @LastEditTime: 2022-11-09 14:27:37
  * @FilePath: \rabbit-ts-vue3.2\src\views\playground\index.vue
  * @Description:playground
 -->
 <script setup lang="ts" name="Playground">
-import { useMouse } from '@/hooks/useMouse'
-import useTimer  from '@/hooks/useTimer';
+import useMouse from '@/hooks/useMouse'
+import useTimer  from '@/hooks/useTimer'
 const { x, y } = useMouse()
 const {count,stop,start} = useTimer(50,undefined,30,()=>{
 console.log('count',count.value)

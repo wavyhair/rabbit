@@ -4,7 +4,7 @@ import { onMounted, onUnmounted } from 'vue'
  * @Author: CHENJIE
  * @Date: 2022-11-09 10:53:50
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-11-09 11:26:27
+ * @LastEditTime: 2022-11-09 14:26:17
  * @FilePath: \rabbit-ts-vue3.2\src\hooks\useEventListener.ts
  * @Description:useEventListener
  */
@@ -14,7 +14,7 @@ import { onMounted, onUnmounted } from 'vue'
  * @param {Params} params 监听目标 事件名 回调函数
  * @return {*}
  */
-export const useEventListener = (
+const useEventListener = (
   target: Window | HTMLElement,
   event: string,
   cb: (e: any) => void
@@ -26,3 +26,4 @@ export const useEventListener = (
     target.removeEventListener(event, cb)
   })
 }
+export default useEventListener
