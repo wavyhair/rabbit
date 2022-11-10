@@ -3,13 +3,14 @@
 <<<<<<< HEAD
  * @Date: 2022-11-09 10:44:40
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-11-10 13:14:31
+ * @LastEditTime: 2022-11-10 13:52:34
  * @FilePath: \rabbit-ts-vue3.2\src\views\playground\index.vue
  * @Description:playground
 -->
 <script setup lang="ts" name="Playground">
 import useDebounce from '@/hooks/useDebounce';
 import useMouse from '@/hooks/useMouse'
+import useThrottle from '@/hooks/useThrottle';
 import useTimer from '@/hooks/useTimer'
 import { useDebounceFn } from '@vueuse/core';
 import { TransitionGroup } from 'vue'
@@ -28,6 +29,9 @@ const itemDel = () => {
 const handleDebounce = () => useDebounce(undefined, () => {
   alert('2')
 })
+const handleThrottle = () => useThrottle(undefined, () => {
+  console.log('n秒内执行一次')
+})
 </script>
 <template>
   <div class="playground">
@@ -40,6 +44,7 @@ const handleDebounce = () => useDebounce(undefined, () => {
     <button @click="itemDel" :disabled="!items.arr.length">itemDel</button>
     <button @click="itemAdd">itemsAdd</button>
     <button @click="handleDebounce">useDebounce</button>
+    <button @click="handleThrottle">useThrottle</button>
     <TransitionGroup name="list" tag="ul">
       <li v-for="item in items.arr" :key="item">
         {{ item }}
