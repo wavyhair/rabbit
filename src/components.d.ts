@@ -24,6 +24,7 @@ declare module '@vue/runtime-core' {
     CheckoutAddress: typeof import('./views/member/pay/components/checkout-address.vue')['default']
     City: typeof import('./components/city/index.vue')['default']
     Confirm: typeof import('./components/XtxConfirm/confirm.vue')['default']
+    DefineExpose: typeof import('./views/playground/components/defineExpose.vue')['default']
     Goods: typeof import('./views/goods/index.vue')['default']
     GoodsDetali: typeof import('./views/goods/components/goods-detali.vue')['default']
     GoodsHot: typeof import('./views/goods/components/goods-hot.vue')['default']

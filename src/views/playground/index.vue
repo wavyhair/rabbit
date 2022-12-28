@@ -1,9 +1,7 @@
 <!--
  * @Author: CHENJIE
-<<<<<<< HEAD
- * @Date: 2022-11-09 10:44:40
  * @LastEditors: CHENJIE
- * @LastEditTime: 2022-11-10 13:52:34
+ * @LastEditTime: 2022-12-28 10:10:19
  * @FilePath: \rabbit-ts-vue3.2\src\views\playground\index.vue
  * @Description:playground
 -->
@@ -12,8 +10,8 @@ import useDebounce from '@/hooks/useDebounce';
 import useMouse from '@/hooks/useMouse'
 import useThrottle from '@/hooks/useThrottle';
 import useTimer from '@/hooks/useTimer'
-import { useDebounceFn } from '@vueuse/core';
 import { TransitionGroup } from 'vue'
+import DefineExpose from './components/defineExpose.vue';
 const { x, y } = useMouse()
 const { count, stop, start } = useTimer(50, undefined, 30, () => {
   console.log('count', count.value)
@@ -32,8 +30,12 @@ const handleDebounce = () => useDebounce(undefined, () => {
 const handleThrottle = () => useThrottle(undefined, () => {
   console.log('n秒内执行一次')
 })
+const defineExposeRef = ref<null | { num: number, msg: string }>(null)
+
 </script>
 <template>
+  <DefineExpose ref="defineExposeRef" />
+  {{ defineExposeRef?.msg }}
   <div class="playground">
     <h1 class="title">Playground</h1>
     <p>pageX:{{ x }}</p>
